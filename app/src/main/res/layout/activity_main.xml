@@ -173,7 +173,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="8dip"
-                android:text="Baketball"
+                android:text="Basketball"
                 android:textColor="#000000" />
         </TableRow>
 
@@ -194,7 +194,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="8dip"
-                android:text="Baketball"
+                android:text="Basketball"
                 android:textColor="#000000" />
         </TableRow>
 
@@ -215,7 +215,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="8dip"
-                android:text="Baketball"
+                android:text="Basketball"
                 android:textColor="#000000" />
         </TableRow>
     </TableLayout>
