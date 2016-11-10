@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.hxh.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <ViewFlipper
+            android:id="@+id/Pictures"
+            android:layout_width="match_parent"
+            android:layout_height="304dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/pika" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="287dp"
+                app:srcCompat="@drawable/eee" />
+        </ViewFlipper>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button4"
+                style="@android:style/Widget.Material.Button.Colored"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#f9bcab"
+                android:elevation="0dp"
+                android:text="Connect"
+                android:textAppearance="@android:style/TextAppearance"
+                tools:text="Connect" />
+
+            <Button
+                android:id="@+id/button4"
+                style="@android:style/Widget.Material.Button.Colored"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#abc1f9"
+                android:elevation="0dp"
+                android:text="Disconnect"
+                android:textAppearance="@android:style/TextAppearance"
+                tools:text="Disconnect" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Age"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dip"
+                    android:text="Age"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/AgeValue"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dip"
+                    android:text="99"
+                    android:textColor="#000000" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/height"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dip"
+                    android:text="Height"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/heightValue"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dip"
+                    android:text="99"
+                    android:textColor="#000000" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dip"
+                    android:text="Location"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/locationValue"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="8dip"
+                    android:text="Riverside"
+                    android:textColor="#000000" />
+            </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/education"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dip"
+                android:text="Education"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/eduValue"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dip"
+                android:text="UCR"
+                android:textColor="#000000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/interest1"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dip"
+                android:text="Interest"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/interest1Value"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dip"
+                android:text="Baketball"
+                android:textColor="#000000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/interest2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dip"
+                android:text="Interest"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/interest2Value"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dip"
+                android:text="Baketball"
+                android:textColor="#000000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/interest3"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dip"
+                android:text="Interest"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/interest3Value"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="8dip"
+                android:text="Baketball"
+                android:textColor="#000000" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
+
+    </ScrollView>
