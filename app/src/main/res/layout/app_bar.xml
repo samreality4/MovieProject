@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:visibility="visible"
+        android:id="@+id/candidate"
+        android:textOn="Her"
+        android:text="Her"
+        app:buttonTint="@color/colorPrimaryDark" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/chat"
+        android:text="Talk"
+        app:buttonTint="@color/colorPrimary" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/Profile"
+        android:text="Yourself"
+        app:buttonTint="@color/colorAccent"
+        android:elevation="0dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/library"
+        android:text="Library"
+        app:buttonTint="@color/colorPrimaryDark" />
+    </LinearLayout>
+</android.support.v7.widget.Toolbar>
