@@ -55,4 +55,9 @@ public class MainActivity extends AppCompatActivity {
             ((ViewPager) container).removeView((ImageView) object);
         }
     }
+    //change layout to chat_room//
+    public void changelayout(View view){
+        setContentView(R.layout.chat_room);
+    }
+
 }

@@ -47,5 +47,53 @@
         <item>7.7</item>
         <item>7.8</item>
     </string-array>
+    <string-array name="Interest1">
+        <item>Basketball</item>
+        <item>Baseball</item>
+        <item>Football</item>
+        <item>Soccer</item>
+        <item>Art</item>
+        <item>Animation</item>
+        <item>Hiking</item>
+        <item>Diving</item>
+        <item>Food</item>
+        <item>Reading</item>
+        <item>Movies</item>
+        <item>4.11</item>
+        <item>5.0</item>
+        <item>5.1</item>
+        <item>5.2</item>
+        <item>5.3</item>
+        <item>5.4</item>
+        <item>5.5</item>
+        <item>5.6</item>
+        <item>5.7</item>
+        <item>5.8</item>
+        <item>5.9</item>
+        <item>5.10</item>
+        <item>5.11</item>
+        <item>6.0</item>
+        <item>6.1</item>
+        <item>6.2</item>
+        <item>6.3</item>
+        <item>6.4</item>
+        <item>6.5</item>
+        <item>6.6</item>
+        <item>6.7</item>
+        <item>6.8</item>
+        <item>6.9</item>
+        <item>6.10</item>
+        <item>6.11</item>
+        <item>7.0</item>
+        <item>7.1</item>
+        <item>7.2</item>
+        <item>7.3</item>
+        <item>7.4</item>
+        <item>7.5</item>
+        <item>7.6</item>
+        <item>7.7</item>
+        <item>7.8</item>
+    </string-array>
+
 
 </resources>
