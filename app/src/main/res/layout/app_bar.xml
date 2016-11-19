@@ -1,47 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
+    android:background="@color/Silver"
+    android:elevation="15dp"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    >
+    android:minHeight="26dp">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <Button
-        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:visibility="visible"
-        android:id="@+id/candidate"
-        android:textOn="Her"
-        android:text="Her"
-        app:buttonTint="@color/colorPrimaryDark" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:onClick="changelayout"
-        android:id="@+id/chat"
-        android:text="Talk"
-        app:buttonTint="@color/colorPrimary" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/Profile"
-        android:text="Yourself"
-        app:buttonTint="@color/colorAccent"
-        android:elevation="0dp" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/library"
-        android:text="Library"
-        app:buttonTint="@color/colorPrimaryDark" />
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/candidate"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/Silver"
+            android:elevation="0dp"
+            android:text="Her"
+            android:textOn="Her"
+            android:visibility="visible"
+            android:onClick="changelayouther" />
+
+        <Button
+            android:id="@+id/chat"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/Silver"
+            android:onClick="changelayout"
+            android:text="Talk" />
+
+        <Button
+            android:id="@+id/Profile"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/Silver"
+            android:elevation="0dp"
+            android:onClick="changelayoutyou"
+            android:text="You" />
+
+        <Button
+            android:id="@+id/library"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/Silver"
+            android:text="Library"
+            android:onClick="changelayoutlibrary" />
+
     </LinearLayout>
+
 </android.support.v7.widget.Toolbar>

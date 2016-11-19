@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.android.hxh.MainActivity">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <ScrollView
@@ -14,7 +10,7 @@
         android:layout_weight="8"
         android:backgroundTint="@color/Lightpink">
 
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -51,8 +47,7 @@
                     android:backgroundTint="#f9bcab"
                     android:elevation="0dp"
                     android:text="Connect"
-                    android:textAppearance="@android:style/TextAppearance"
-                    tools:text="Connect" />
+                    android:textAppearance="@android:style/TextAppearance" />
 
                 <Button
                     android:id="@+id/disconnect"
@@ -63,8 +58,7 @@
                     android:backgroundTint="#abc1f9"
                     android:elevation="0dp"
                     android:text="Disconnect"
-                    android:textAppearance="@android:style/TextAppearance"
-                    tools:text="Disconnect" />
+                    android:textAppearance="@android:style/TextAppearance" />
             </LinearLayout>
 
             <TableLayout
@@ -222,8 +216,7 @@
                 </TableRow>
             </TableLayout>
 
-
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
     <include
         android:id="@+id/appbar"

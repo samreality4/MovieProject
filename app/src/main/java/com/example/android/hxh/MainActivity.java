@@ -59,5 +59,16 @@ public class MainActivity extends AppCompatActivity {
     public void changelayout(View view){
         setContentView(R.layout.chat_room);
     }
+    //change layout to activity_main2//
+    public void changelayoutyou(View view){
+        setContentView(R.layout.activity_main2);
+    }
+    //change layout to activity_main//
+    public void changelayouther(View view){
+        setContentView(R.layout.activity_main);
+    }
+    public void changelayoutlibrary(View view){
+        setContentView(R.layout.library);
+    }
 
 }
