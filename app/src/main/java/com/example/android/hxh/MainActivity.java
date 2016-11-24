@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //change layout to chat_room//
     public void changelayout(View view){
-        setContentView(R.layout.chat_room);
+        setContentView(R.layout.chat_main);
     }
     //change layout to activity_main2//
     public void changelayoutyou(View view){
@@ -68,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void changelayoutlibrary(View view){
-        setContentView(R.layout.library);
+        setContentView(R.layout.library_main);
     }
-
+    public void chatroom1(View view){
+        setContentView(R.layout.chat_room);
+    }
 }
