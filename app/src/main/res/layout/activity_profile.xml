@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.android.hxh.MainActivity">
-
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.android.hxh.ProfileActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="8"
-        android:backgroundTint="@color/Lightpink">
+        android:backgroundTint="@color/Lightblue">
 
-    <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -31,48 +34,19 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp">
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/view_pager"
+                <ImageView
+                    android:id="@+id/imageView2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"></ImageView>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="287dp"></ImageView>
+
+
             </ViewFlipper>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/connect"
-                    style="@android:style/Widget.Material.Button.Colored"
-                    android:layout_width="175dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#f9bcab"
-                    android:elevation="0dp"
-                    android:text="Connect"
-                    android:textAppearance="@android:style/TextAppearance"
-                    tools:text="Connect" />
-
-                <Button
-                    android:id="@+id/disconnect"
-                    style="@android:style/Widget.Material.Button.Colored"
-                    android:layout_width="175dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#abc1f9"
-                    android:elevation="0dp"
-                    android:text="Disconnect"
-                    android:textAppearance="@android:style/TextAppearance"
-                    tools:text="Disconnect" />
-            </LinearLayout>
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dialog" />
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -90,12 +64,12 @@
                         android:text="Age"
                         android:textColor="#000000" />
 
-                    <TextView
+                    <Spinner
                         android:id="@+id/AgeValue"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:text="99"
+                        android:inputType="number"
                         android:textColor="#000000" />
                 </TableRow>
 
@@ -111,13 +85,12 @@
                         android:text="Height"
                         android:textColor="#000000" />
 
-                    <TextView
-                        android:id="@+id/heightValue"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="8dip"
-                        android:text="99"
-                        android:textColor="#000000" />
+                    <Spinner
+                        android:id="@+id/height_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:spinnerMode="dialog" />
                 </TableRow>
 
                 <TableRow
@@ -132,19 +105,18 @@
                         android:text="Location"
                         android:textColor="#000000" />
 
-                    <TextView
+                    <Spinner
                         android:id="@+id/locationValue"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:text="Riverside"
+                        android:inputType="text"
                         android:textColor="#000000" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:baselineAligned="false">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/education"
@@ -154,12 +126,11 @@
                         android:text="Education"
                         android:textColor="#000000" />
 
-                    <TextView
+                    <Spinner
                         android:id="@+id/eduValue"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:text="UCR"
                         android:textColor="#000000" />
                 </TableRow>
 
@@ -175,12 +146,11 @@
                         android:text="Interest"
                         android:textColor="#000000" />
 
-                    <TextView
+                    <Spinner
                         android:id="@+id/interest1Value"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:text="Basketball"
                         android:textColor="#000000" />
                 </TableRow>
 
@@ -196,12 +166,11 @@
                         android:text="Interest"
                         android:textColor="#000000" />
 
-                    <TextView
+                    <Spinner
                         android:id="@+id/interest2Value"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:text="Basketball"
                         android:textColor="#000000" />
                 </TableRow>
 
@@ -217,21 +186,18 @@
                         android:text="Interest"
                         android:textColor="#000000" />
 
-                    <TextView
+                    <Spinner
                         android:id="@+id/interest3Value"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:text="Basketball"
                         android:textColor="#000000" />
-
                 </TableRow>
             </TableLayout>
-
-
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
     <include
         android:id="@+id/appbar"
         layout="@layout/app_bar"/>
+
 </LinearLayout>

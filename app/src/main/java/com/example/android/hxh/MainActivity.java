@@ -7,7 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
+
+import com.example.android.hxh.model.Height;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         ImagePagerAdapter adapter = new ImagePagerAdapter();
         viewPager.setAdapter(adapter);
+
+        Spinner dropdown = (Spinner)findViewById(R.id.spinner);
+        ArrayList<Height> heights = new ArrayList<>();
+        for (int i = 48; i <= 96; i++) {
+            heights.add(new Height(i));
+        }
+        ArrayAdapter<Height> adapter2 = new ArrayAdapter<Height>(this, android.R.layout.simple_spinner_dropdown_item, heights);
+        dropdown.setAdapter(adapter2);
     }
 
     private class ImagePagerAdapter extends PagerAdapter {
@@ -61,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //change layout to activity_main2//
     public void changelayoutyou(View view){
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_profile);
     }
     //change layout to activity_main//
     public void changelayouther(View view){
