@@ -1,6 +1,7 @@
 package com.example.android.hxh;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -75,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
     }
     //change layout to activity_main2//
     public void changelayoutyou(View view){
-        setContentView(R.layout.activity_profile);
+        Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(profileIntent);
     }
     //change layout to activity_main//
     public void changelayouther(View view){
