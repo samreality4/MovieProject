@@ -5,68 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="1">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/pix1"
-            app:srcCompat="@drawable/pika" />
-
-        <ImageView
+    <ViewFlipper
+        android:id="@+id/Pictures"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-            android:id="@+id/pix2"
-            app:srcCompat="@drawable/eee" />
-    </LinearLayout>
+        android:layout_height="304dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-        <ImageView
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/pix3"
-            app:srcCompat="@drawable/pika" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/pix4"
-            app:srcCompat="@drawable/eee" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/pix5"
-            app:srcCompat="@drawable/eee" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/pix6"
-            app:srcCompat="@drawable/pika" />
-    </LinearLayout>
-    <include
-        android:id="@+id/appbar"
-        layout="@layout/app_bar"/>
-
+            android:layout_height="match_parent" />
+    </ViewFlipper>
 </LinearLayout>
