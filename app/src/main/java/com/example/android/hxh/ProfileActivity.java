@@ -1,6 +1,5 @@
 package com.example.android.hxh;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -9,7 +8,7 @@ import com.example.android.hxh.model.Height;
 
 import java.util.ArrayList;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

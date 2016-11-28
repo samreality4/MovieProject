@@ -1,16 +1,14 @@
 package com.example.android.hxh;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,15 +57,6 @@ public class MainActivity extends AppCompatActivity {
     //change layout to chat_room//
     public void changelayout(View view){
         setContentView(R.layout.chat_main);
-    }
-    //change layout to activity_main2//
-    public void changelayoutyou(View view){
-        Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
-        startActivity(profileIntent);
-    }
-    //change layout to activity_main//
-    public void changelayouther(View view){
-        setContentView(R.layout.activity_main);
     }
     public void changelayoutlibrary(View view){
         setContentView(R.layout.library_main);

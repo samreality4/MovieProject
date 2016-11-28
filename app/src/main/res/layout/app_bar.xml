@@ -27,7 +27,7 @@
             android:text="Her"
             android:textOn="Her"
             android:visibility="visible"
-            android:onClick="changelayouther" />
+            android:onClick="goToMain" />
 
         <Button
             android:id="@+id/chat"
@@ -47,7 +47,7 @@
             android:layout_weight="1"
             android:background="@color/Silver"
             android:elevation="0dp"
-            android:onClick="changelayoutyou"
+            android:onClick="goToProfile"
             android:text="You" />
 
         <Button
