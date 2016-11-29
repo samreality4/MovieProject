@@ -25,8 +25,8 @@
             android:layout_weight="1"
             android:background="@color/Silver"
             android:elevation="0dp"
-            android:text="Her"
-            android:textOn="Her"
+            android:text="Fate"
+            android:textOn="Fate"
             android:visibility="visible"
             android:onClick="goToMain" />
 
@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:background="@color/Silver"
             android:onClick="changelayout"
-            android:text="Talk" />
+            android:text="Link" />
 
         <Button
             android:id="@+id/Profile"
@@ -58,7 +58,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/Silver"
-            android:text="Library"
+            android:text="Choice"
             android:onClick="changelayoutlibrary" />
 
     </LinearLayout>

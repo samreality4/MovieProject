@@ -36,6 +36,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="287dp"></ImageView>
 
+                <Button
+                    android:text="Save"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/button3"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:background="@color/Lightblue"
+                    tools:text="Save"
+                    android:elevation="0dp" />
+
 
             </ViewFlipper>
 
