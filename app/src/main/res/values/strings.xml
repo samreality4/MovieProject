@@ -49,52 +49,62 @@
         <item>7.7</item>
         <item>7.8</item>
     </string-array>
-    <string-array name="Interest1">
-        <item>Basketball</item>
+    <string-array name="interest1_array">
+        <item>Animal Care</item>
         <item>Baseball</item>
+        <item>Basketball</item>
+        <item>Beach</item>
+        <item>Bicycling</item>
+        <item>Billiards</item>
+        <item>Boating</item>
+        <item>Bowling</item>
+        <item>Camping</item>
+        <item>Church Activities</item>
+        <item>Computer</item>
+        <item>Cooking</item>
+        <item>Crafts</item>
+        <item>Dancing</item>
+        <item>Dating Online</item>
+        <item>Eating Out</item>
+        <item>Entertaining</item>
+        <item>Exercise</item>
+        <item>Family Time</item>
+        <item>Fishing</item>
         <item>Football</item>
-        <item>Soccer</item>
-        <item>Art</item>
-        <item>Animation</item>
+        <item>Gardening</item>
+        <item>Going to Movies</item>
+        <item>Golf</item>
         <item>Hiking</item>
-        <item>Diving</item>
-        <item>Food</item>
+        <item>Horseback Riding</item>
+        <item>Housework</item>
+        <item>Hunting</item>
+        <item>Listening to Music</item>
+        <item>Motorcycling</item>
+        <item>Painting</item>
+        <item>Playing Cards</item>
+        <item>Playing Music</item>
         <item>Reading</item>
-        <item>Movies</item>
-        <item>4.11</item>
-        <item>5.0</item>
-        <item>5.1</item>
-        <item>5.2</item>
-        <item>5.3</item>
-        <item>5.4</item>
-        <item>5.5</item>
-        <item>5.6</item>
-        <item>5.7</item>
-        <item>5.8</item>
-        <item>5.9</item>
-        <item>5.10</item>
-        <item>5.11</item>
-        <item>6.0</item>
-        <item>6.1</item>
-        <item>6.2</item>
-        <item>6.3</item>
-        <item>6.4</item>
-        <item>6.5</item>
-        <item>6.6</item>
-        <item>6.7</item>
-        <item>6.8</item>
-        <item>6.9</item>
-        <item>6.10</item>
-        <item>6.11</item>
-        <item>7.0</item>
-        <item>7.1</item>
-        <item>7.2</item>
-        <item>7.3</item>
-        <item>7.4</item>
-        <item>7.5</item>
-        <item>7.6</item>
-        <item>7.7</item>
-        <item>7.8</item>
+        <item>Relaxing</item>
+        <item>Renting Movies</item>
+        <item>Running</item>
+        <item>Sewing</item>
+        <item>Shopping</item>
+        <item>Skiing</item>
+        <item>Sleeping</item>
+        <item>Soccer</item>
+        <item>Socializing</item>
+        <item>Swimming</item>
+        <item>Team Sports</item>
+        <item>Tennis</item>
+        <item>Theater</item>
+        <item>Traveling</item>
+        <item>Volunteer Work</item>
+        <item>Walking</item>
+        <item>Watching Sports</item>
+        <item>Watching TV</item>
+        <item>Working on Cars</item>
+        <item>Writing</item>
+
     </string-array>
 
 
