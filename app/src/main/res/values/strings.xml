@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">HXH</string>
+    <string name="facebook_app_id">1816951785255075</string>
+    <string name="fb_login_protocol_scheme">fb1816951785255075</string>
     <string-array name="height_array">
         <item>4.0</item>
         <item>4.1</item>
