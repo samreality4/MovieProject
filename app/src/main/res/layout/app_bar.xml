@@ -42,10 +42,10 @@
         <Button
             android:id="@+id/Profile"
             style="@android:style/Widget.Holo.Button"
-            android:layout_width="wrap_content"
+            android:layout_width="3dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/Silver"
+            android:background="@drawable/Catpro"
             android:elevation="0dp"
             android:onClick="goToProfile"
             android:text="You" />
