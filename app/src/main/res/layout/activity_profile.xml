@@ -200,6 +200,7 @@
             </TableLayout>
         </LinearLayout>
     </ScrollView>
+
     <include
         android:id="@+id/appbar"
         layout="@layout/app_bar"/>

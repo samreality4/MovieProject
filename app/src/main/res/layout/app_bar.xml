@@ -20,23 +20,22 @@
         <Button
             android:id="@+id/candidate"
             style="@android:style/Widget.Holo.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/Silver"
+            android:background="@drawable/cat"
             android:elevation="0dp"
-            android:text="Fate"
-            android:textOn="Fate"
+            android:text="Catch"
             android:visibility="visible"
             android:onClick="goToMain" />
 
         <Button
             android:id="@+id/chat"
             style="@android:style/Widget.Holo.Button"
-            android:layout_width="wrap_content"
+            android:layout_width="3dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/Silver"
+            android:background="@drawable/mail"
             android:onClick="changelayout"
             android:text="Link" />
 
