@@ -35,7 +35,7 @@
             android:layout_width="3dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/mail"
+            android:background="@android:drawable/ic_dialog_email"
             android:onClick="changelayout"
             android:text="Link" />
 
