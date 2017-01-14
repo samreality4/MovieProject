@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:drawable/ic_dialog_email"
-            android:onClick="changelayout"
+            android:onClick="goToChatroom"
             android:text="Link" />
 
         <Button
@@ -58,7 +58,7 @@
             android:layout_weight="1"
             android:background="@color/Silver"
             android:text="Choice"
-            android:onClick="changelayoutlibrary" />
+            android:onClick="goToLibrary" />
 
     </LinearLayout>
 
