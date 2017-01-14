@@ -53,15 +53,9 @@ public class MainActivity extends BaseActivity {
         public void destroyItem(ViewGroup container, int position, Object object) {
             ((ViewPager) container).removeView((ImageView) object);
         }
-    }
-    //change layout to chat_room//
-    public void changelayout(View view){
-        setContentView(R.layout.chat_main);
-    }
-    public void changelayoutlibrary(View view){
-        setContentView(R.layout.library_main);
-    }
-    public void chatroom1(View view){
-        setContentView(R.layout.chat_room);
+        //change layout to chat_room// 
+        public void changelayout(View view){     setContentView(R.layout.chat_main); } 
+        public void changelayoutlibrary(View view){     setContentView(R.layout.library_main); } 
+        public void candidate(View view){     setContentView(R.layout.activity_main); }
     }
 }
