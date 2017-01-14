@@ -20,8 +20,10 @@
         <Button
             android:id="@+id/candidate"
             style="@android:style/Widget.Holo.Button"
-            android:layout_width="3dp"
-            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/cat"
             android:elevation="0dp"
@@ -32,8 +34,10 @@
         <Button
             android:id="@+id/chat"
             style="@android:style/Widget.Holo.Button"
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@android:drawable/ic_dialog_email"
             android:onClick="goToChatroom"
@@ -42,10 +46,12 @@
         <Button
             android:id="@+id/Profile"
             style="@android:style/Widget.Holo.Button"
-            android:layout_width="3dp"
-            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/catprowhite"
+            android:background="@drawable/catprofilee"
             android:elevation="0dp"
             android:onClick="goToProfile"
             android:text="You" />
@@ -53,10 +59,12 @@
         <Button
             android:id="@+id/library"
             style="@android:style/Widget.Holo.Button"
-            android:layout_width="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/Silver"
+            android:background="@drawable/library"
             android:text="Choice"
             android:onClick="goToLibrary" />
 
