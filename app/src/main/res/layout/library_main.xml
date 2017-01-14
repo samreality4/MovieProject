@@ -19,4 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </ViewFlipper>
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/app_bar" />
 </LinearLayout>

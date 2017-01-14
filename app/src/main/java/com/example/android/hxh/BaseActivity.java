@@ -21,7 +21,7 @@ public class BaseActivity extends AppCompatActivity {
      * @param view
      */
     public void goToChatroom(View view) {
-        goTo(ChatRoom.class);
+        goTo(ChatActivity.class);
     }
 
     /**
@@ -31,6 +31,15 @@ public class BaseActivity extends AppCompatActivity {
      */
     public void goToProfile(View view) {
         goTo(ProfileActivity.class);
+    }
+
+    /**
+     * Go to library tab
+     *
+     * @param view
+     */
+    public void goToLibrary(View view) {
+        goTo(LibraryActivity.class);
     }
 
     private void goTo(Class className) {

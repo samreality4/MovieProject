@@ -17,6 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<activity android:name=".ChatActivity" />
+        <activity android:name=".LibraryActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ConnectActivity">
         </activity>
