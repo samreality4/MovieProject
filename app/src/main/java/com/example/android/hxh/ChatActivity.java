@@ -13,6 +13,6 @@ public class ChatActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chat_room);
+        setContentView(R.layout.chat_main);
     }
 }

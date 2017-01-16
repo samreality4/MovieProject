@@ -25,9 +25,8 @@
             android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/cat"
+            android:background="@drawable/catpaw"
             android:elevation="0dp"
-            android:text="Catch"
             android:visibility="visible"
             android:onClick="goToMain" />
 
@@ -39,9 +38,8 @@
             android:layout_width="25dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:drawable/ic_dialog_email"
-            android:onClick="goToChatroom"
-            android:text="Link" />
+            android:background="@drawable/notification"
+            android:onClick="goToChatroom" />
 
         <Button
             android:id="@+id/Profile"
@@ -53,8 +51,7 @@
             android:layout_weight="1"
             android:background="@drawable/catprofilee"
             android:elevation="0dp"
-            android:onClick="goToProfile"
-            android:text="You" />
+            android:onClick="goToProfile" />
 
         <Button
             android:id="@+id/library"
@@ -65,7 +62,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/library"
-            android:text="Choice"
             android:onClick="goToLibrary" />
 
     </LinearLayout>
