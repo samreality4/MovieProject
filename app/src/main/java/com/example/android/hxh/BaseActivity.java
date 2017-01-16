@@ -48,9 +48,4 @@ public class BaseActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    public void didTapButton(View view) {
-        Button button = (Button)findViewById(R.id.button);
-        final Animator myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
-        button.startanimator(myAnim);
-    }
 }
