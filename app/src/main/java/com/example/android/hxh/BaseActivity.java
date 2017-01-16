@@ -1,5 +1,6 @@
 package com.example.android.hxh;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -46,5 +47,10 @@ public class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), className);
         startActivity(intent);
         finish();
+    }
+    public void didTapButton(View view) {
+        Button button = (Button)findViewById(R.id.button);
+        final Animator myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
+        button.startanimator(myAnim);
     }
 }
