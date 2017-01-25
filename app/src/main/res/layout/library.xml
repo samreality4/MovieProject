@@ -46,7 +46,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#f9bcab"
                     android:elevation="0dp"
-                    android:text="Connect"
+                    android:text="Catch"
                     android:textAppearance="@android:style/TextAppearance" />
 
                 <Button
@@ -57,7 +57,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#abc1f9"
                     android:elevation="0dp"
-                    android:text="Disconnect"
+                    android:text="Release"
                     android:textAppearance="@android:style/TextAppearance" />
             </LinearLayout>
 

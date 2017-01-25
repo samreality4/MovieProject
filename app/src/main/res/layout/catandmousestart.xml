@@ -14,7 +14,7 @@
         android:textAppearance="@android:style/TextAppearance" />
 
     <TextView
-        android:text="Choose Cat and you will first to act."
+        android:text="Choose Cat and you will be first to act. You will take the initative of engaging the first step toward connection. "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cattext"
@@ -32,7 +32,7 @@
         android:textAppearance="@android:style/TextAppearance" />
 
     <TextView
-        android:text="TextView"
+        android:text="Choose Mouse and you will be passive.  You will only be choosing candidates that already tried to connect with you."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mousetext"
