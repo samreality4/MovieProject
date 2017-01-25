@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/patient"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="#f9bcab"
+        android:elevation="0dp"
+        android:text="Patient"
+        android:textAppearance="@android:style/TextAppearance" />
+
+    <TextView
+        android:text="Choose patient you will have only 1 match at a time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/patienttext"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/agressive"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="#abc1f9"
+        android:elevation="0dp"
+        android:text="Aggressive"
+        android:textAppearance="@android:style/TextAppearance" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/agressivetext"
+        android:layout_weight="1" />
+</LinearLayout>
