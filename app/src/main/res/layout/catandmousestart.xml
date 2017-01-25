@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/cat"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="#f9bcab"
+        android:elevation="0dp"
+        android:text="Cat"
+        android:textAppearance="@android:style/TextAppearance" />
+
+    <TextView
+        android:text="Choose Cat and you will first to act."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cattext"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/mouse"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="#abc1f9"
+        android:elevation="0dp"
+        android:text="Mouse"
+        android:textAppearance="@android:style/TextAppearance" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mousetext"
+        android:layout_weight="1" />
+</LinearLayout>

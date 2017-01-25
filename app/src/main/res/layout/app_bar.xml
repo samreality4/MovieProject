@@ -19,7 +19,6 @@
 
         <Button
             android:id="@+id/candidate"
-            style="@android:style/Widget.Holo.Button"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_width="25dp"
@@ -28,7 +27,9 @@
             android:background="@drawable/catpaw"
             android:elevation="0dp"
             android:visibility="visible"
-            android:onClick="goToMain" />
+            android:onClick="goToMain"
+            style="@style/button" />
+
 
         <Button
             android:id="@+id/chat"
@@ -46,7 +47,7 @@
             style="@android:style/Widget.Holo.Button"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:layout_width="25dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/catprofilee"
@@ -58,7 +59,7 @@
             style="@android:style/Widget.Holo.Button"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:layout_width="25dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/library"
