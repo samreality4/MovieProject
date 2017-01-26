@@ -17,50 +17,51 @@
         android:layout_marginRight="15dp"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/candidate"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_width="25dp"
-            android:layout_height="35dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/catpaw"
-            android:elevation="0dp"
+            android:background="@drawable/catpawselector"
             android:visibility="visible"
-            android:onClick="goToMain"
-            style="@style/button" />
+            android:onClick="goToMain" />
 
 
-        <Button
+        <ImageButton
             android:id="@+id/chat"
-            style="@android:style/Widget.Holo.Button"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_width="25dp"
-            android:layout_height="35dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/notification"
             android:onClick="goToChatroom" />
 
-        <Button
+        <ImageButton
             android:id="@+id/Profile"
-            style="@android:style/Widget.Holo.Button"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="0dp"
             android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:background="@drawable/catprofilee"
-            android:elevation="0dp"
+            android:layout_weight="1"
             android:onClick="goToProfile" />
 
-        <Button
+        <ImageButton
             android:id="@+id/library"
-            style="@android:style/Widget.Holo.Button"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
             android:layout_width="30dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/library"
             android:onClick="goToLibrary" />
