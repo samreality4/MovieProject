@@ -40,18 +40,18 @@
             android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/notification"
+            android:background="@drawable/talkselector"
             android:onClick="goToChatroom" />
 
         <ImageButton
             android:id="@+id/Profile"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:background="@drawable/catprofilee"
+            android:background="@drawable/catprofileselector"
             android:layout_weight="1"
             android:onClick="goToProfile" />
 
@@ -63,7 +63,7 @@
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/library"
+            android:background="@drawable/libraryselector"
             android:onClick="goToLibrary" />
 
     </LinearLayout>
