@@ -16,8 +16,8 @@
 
         <ImageButton
             android:id="@+id/candidate"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_width="25dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -56,6 +56,15 @@
             android:background="@drawable/libraryselector"
             android:onClick="goToLibrary" />
 
+        <ImageButton
+            android:id="@+id/poll"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/pollselector"
+            android:layout_weight="1"
+            android:onClick="goToPoll" />
     </LinearLayout>
 
 </android.support.v7.widget.Toolbar>

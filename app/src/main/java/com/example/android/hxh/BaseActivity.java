@@ -13,7 +13,7 @@ public class BaseActivity extends AppCompatActivity {
      *
      * @param view
      */
-    public void goToMain(View view) {goTo(MainActivity.class);
+    public void goToMain(View view) {goTo(MainActivity.class);}
 
     /**
      * Go to chatroom
@@ -40,6 +40,11 @@ public class BaseActivity extends AppCompatActivity {
     public void goToLibrary(View view) {
         goTo(LibraryActivity.class);
     }
+/**Go to Poll
+    *
+            * @param view
+    */
+    public void goToPoll(View view) {goTo(PollActivity.class);}
 
     private void goTo(Class className) {
         Intent intent = new Intent(getApplicationContext(), className);
