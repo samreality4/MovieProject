@@ -113,9 +113,11 @@
                         android:id="@+id/location_value"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:layout_height="36dp"
                         android:padding="8dip"
                         android:inputType="text"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:background="@android:drawable/btn_dropdown"/>
                 </TableRow>
 
                 <TableRow
@@ -134,8 +136,10 @@
                         android:id="@+id/edu_value"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:layout_height="36dp"
                         android:padding="8dip"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:background="@android:drawable/btn_dropdown"/>
                 </TableRow>
 
                 <TableRow
@@ -155,7 +159,9 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:layout_height="36dp"
+                        android:background="@android:drawable/btn_dropdown"/>
                 </TableRow>
 
                 <TableRow
@@ -175,7 +181,9 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:layout_height="36dp"
+                        android:background="@android:drawable/btn_dropdown"/>
                 </TableRow>
 
                 <TableRow
@@ -195,7 +203,9 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dip"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:layout_height="36dp"
+                        android:background="@android:drawable/btn_dropdown"/>
                 </TableRow>
             </TableLayout>
         </LinearLayout>
