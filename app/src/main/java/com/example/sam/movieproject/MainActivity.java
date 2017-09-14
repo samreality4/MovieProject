@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         private MovieAdapter movieAdapter;
         Context context;
         List<Movie> list = new ArrayList<>();
-        String url1 = "https://api.themoviedb.org/3/discover/movie?api_key=your_api_key&sort_by=vote_average.desc&most_popular.desc";
+        String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key=your_api_key&sort_by=vote_average.desc&most_popular.desc";
         String url2 = "http://api.themoviedb.org/3/movie/popular?api_key=your_api_key";
 
 
