@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$USER_HOME$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gitlab" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gitlab/MovieProject" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gitlab/popular-movie-project" vcs="Git" />
+  </component>
+</project>
