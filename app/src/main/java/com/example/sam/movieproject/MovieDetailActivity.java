@@ -20,18 +20,17 @@ import java.text.ParseException;
  */
 
 public class MovieDetailActivity extends AppCompatActivity{
-    private final String LOG_TAG = MovieDetailActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_details);
 
-        TextView tvOriginalTitle = (TextView) findViewById(R.id.textview_original_title);
-        ImageView ivPoster = (ImageView) findViewById(R.id.imageview_poster);
-        TextView tvOverView = (TextView) findViewById(R.id.textview_overview);
-        TextView tvVoteAverage = (TextView) findViewById(R.id.textview_vote_average);
-        TextView tvReleaseDate = (TextView) findViewById(R.id.textview_release_date);
+        TextView tvOriginalTitle = (TextView) findViewById(R.id.original_title);
+        ImageView ivPoster = (ImageView) findViewById(R.id.poster);
+        TextView tvOverView = (TextView) findViewById(R.id.overview);
+        TextView tvVoteAverage = (TextView) findViewById(R.id.vote_average);
+        TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
 
 
         Intent intent = getIntent();
@@ -39,8 +38,7 @@ public class MovieDetailActivity extends AppCompatActivity{
 
         String title = movie.getmTitle();
         if (title == null) {
-            tvOriginalTitle.setTypeface(null, Typeface.BOLD);
-            title = "wth";
+            tvOriginalTitle.setTypeface(null, Typeface.BOLD_ITALIC);
         }
 
         tvOriginalTitle.setText(movie.getmTitle());
@@ -50,13 +48,13 @@ public class MovieDetailActivity extends AppCompatActivity{
                 .load(movie.getPosterPath())
                 .resize(185,
                 275)
-                .error(R.drawable.not_found)
-                .placeholder(R.drawable.searching)
+                .error(R.drawable.failure)
+                .placeholder(R.drawable.loading)
                 .into(ivPoster);
 
         String overView = movie.getmOverView();
         if (overView == null) {
-            tvOverView.setTypeface(null, Typeface.ITALIC);
+            tvOverView.setTypeface(null, Typeface.BOLD_ITALIC);
             overView = getResources().getString(R.string.no_summary_bro);
         }
         tvOverView.setText(overView);
@@ -65,7 +63,7 @@ public class MovieDetailActivity extends AppCompatActivity{
 
         String releaseDate = movie.getmReleaseDate();
       if(releaseDate == null) {
-            tvReleaseDate.setTypeface(null, Typeface.ITALIC);
+            tvReleaseDate.setTypeface(null, Typeface.BOLD_ITALIC);
             releaseDate = getResources().getString(R.string.no_release_date_found);
         }
         tvReleaseDate.setText(releaseDate);

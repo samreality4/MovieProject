@@ -67,8 +67,8 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Picasso.with(mContext)
                 .load(current.getPosterPath())
                 .resize(185, 278)
-                .error(R.drawable.not_found)
-                .placeholder(R.drawable.searching)
+                .error(R.drawable.failure)
+                .placeholder(R.drawable.loading)
                 .into(myHolder.moviePoster);
 
     }
@@ -89,12 +89,12 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public MyHolder(View itemView) {
             super(itemView);
-            movieTitle = (TextView) itemView.findViewById(R.id.textview_original_title);
-            overView = (TextView) itemView.findViewById(R.id.textview_overview);
-            releaseDate = (TextView) itemView.findViewById(R.id.textview_release_date);
-            voteAverage = (TextView) itemView.findViewById(R.id.textview_vote_average);
+            movieTitle = (TextView) itemView.findViewById(R.id.original_title);
+            overView = (TextView) itemView.findViewById(R.id.overview);
+            releaseDate = (TextView) itemView.findViewById(R.id.release_date);
+            voteAverage = (TextView) itemView.findViewById(R.id.vote_average);
             moviePoster = (ImageView) itemView.findViewById(R.id.left_image1);
-            moviePoster1 = (ImageView) itemView.findViewById(R.id.imageview_poster);
+            moviePoster1 = (ImageView) itemView.findViewById(R.id.poster);
 
 
         }

@@ -9,7 +9,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="256dp"
         android:id="@+id/left_image1"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"/>
