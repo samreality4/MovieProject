@@ -4,4 +4,5 @@
     <string name="no_summary_bro">no summary bro</string>
     <string name="no_release_date_found">no release date brah</string>
     <string name="main_url">"http://api.themoviedb.org/3/movie/popular?api_key"</string>
+    <string name="try_again">"Do it again!!!"</string>
 </resources>

@@ -11,6 +11,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -62,10 +64,32 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         private MovieAdapter movieAdapter;
         Context context;
         List<Movie> list = new ArrayList<>();
-        String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key=your_api_key&sort_by=vote_average.desc&most_popular.desc";
+        String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key=your_api_keyc&sort_by=vote_average.desc&most_popular.desc";
         String url2 = "http://api.themoviedb.org/3/movie/popular?api_key=your_api_key";
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        if(isNetworkAvailable()) {
+            new AsyncFetch().execute(url2);
+        }else{
+            final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                    "No internet connection.",
+                    Snackbar.LENGTH_SHORT);
+        snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(),
+                R.color.colorPrimaryDark));
+        snackbar.setAction(R.string.try_again, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        }).show();
+    }
+
+    context = getApplicationContext();
+
+        }
 
 
     @Override
@@ -75,15 +99,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         intent.putExtra("Movie", movie);
         startActivity(intent);
         Log.d("clicked position:", String.valueOf(position));
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        new AsyncFetch().execute(url2);
-        context = getApplicationContext();
 
     }
 
@@ -112,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
     private class AsyncFetch extends AsyncTask<String, Void, String> {
         ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
@@ -218,6 +234,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
             }
         }
 
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 
