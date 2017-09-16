@@ -64,8 +64,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         private MovieAdapter movieAdapter;
         Context context;
         List<Movie> list = new ArrayList<>();
-        String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key=your_api_keyc&sort_by=vote_average.desc&most_popular.desc";
-        String url2 = "http://api.themoviedb.org/3/movie/popular?api_key=your_api_key";
+        private static final String API_KEY = BuildConfig.API_KEY;
+        String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key="+API_KEY+"&sort_by=vote_average.desc&most_popular.desc";
+        String url2 = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY;
 
 
     @Override
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                     "No internet connection.",
                     Snackbar.LENGTH_SHORT);
         snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(),
-                R.color.colorPrimaryDark));
+                R.color.colorPrimary));
         snackbar.setAction(R.string.try_again, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,15 +115,41 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
 
         switch (item.getItemId()) {
             case R.id.top_rated:
+                if(isNetworkAvailable()){
                 new AsyncFetch().execute(url1);
                 Toast toast = Toast.makeText(context,"Top Rated", Toast.LENGTH_SHORT);
                 toast.show();
-                return true;
+                return true;}else{
+                    final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                            "No internet connection.",
+                            Snackbar.LENGTH_SHORT);
+                    snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(),
+                            R.color.colorPrimary));
+                    snackbar.setAction(R.string.try_again, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                        }
+                    }).show();
+                }
+
             case R.id.most_popular:
+                if(isNetworkAvailable()){
+
                 new AsyncFetch().execute(url2);
                 Toast toast1 = Toast.makeText(context,"Most Popular", Toast.LENGTH_SHORT);
                 toast1.show();
-                return true;
+                return true;}else{
+                    final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                            "No internet connection.",
+                            Snackbar.LENGTH_SHORT);
+                    snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(),
+                            R.color.colorPrimary));
+                    snackbar.setAction(R.string.try_again, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                        }
+                    }).show();
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }
