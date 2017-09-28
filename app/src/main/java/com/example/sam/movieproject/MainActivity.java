@@ -64,9 +64,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         private MovieAdapter movieAdapter;
         Context context;
         List<Movie> list = new ArrayList<>();
-        private static final String API_KEY = BuildConfig.API_KEY;
-        String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key="+API_KEY+"&sort_by=vote_average.desc&most_popular.desc";
-        String url2 = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY;
+        public final String API_KEY = BuildConfig.API_KEY;
+        String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key="+API_KEY+"&sort_by=vote_average.desc&most_popular.desc&append_to_response=video";
+        String url2 = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY+"&append_to_response=video";
 
 
     @Override
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
     }
 
 
-    private class AsyncFetch extends AsyncTask<String, Void, String> {
+    public class AsyncFetch extends AsyncTask<String, Void, String> {
         ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         HttpURLConnection conn;
         URL url = null;
@@ -224,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
             final String TAG_OVERVIEW = "overview";
             final String TAG_VOTE_AVERAGE = "vote_average";
             final String TAG_RELEASE_DATE = "release_date";
+            final String TAG_ID = "id";
 
             pdLoading.dismiss();
 
@@ -234,6 +235,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                 list.clear();
                 JSONObject jobj = new JSONObject(results);
                 JSONArray jArray = jobj.getJSONArray(TAG_RESULTS);
+                Log.i("information", toString().valueOf(jArray));
 
                 for (int i = 0; i < jArray.length(); i++) {
                     JSONObject json_data = jArray.getJSONObject(i);
@@ -243,6 +245,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                     moviedata.mTitle = json_data.getString(TAG_ORIGINAL_TITLE);
                     moviedata.mReleaseDate = json_data.getString(TAG_RELEASE_DATE);
                     moviedata.mVoteAverage = json_data.getDouble(TAG_VOTE_AVERAGE);
+                    moviedata.mID = json_data.getString(TAG_ID);
 
 
                     list.add(moviedata);

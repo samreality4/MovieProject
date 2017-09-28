@@ -50,6 +50,10 @@ public class Movie implements Parcelable{
         return mReleaseDate;
     }
 
+    public String mID;
+
+    public String getmID(){return mID; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -62,6 +66,7 @@ public class Movie implements Parcelable{
         dest.writeString(mOverView);
         dest.writeValue(mVoteAverage);
         dest.writeString(mReleaseDate);
+        dest.writeString(mID);
     }
 
         private Movie (Parcel in) {
@@ -70,6 +75,7 @@ public class Movie implements Parcelable{
         mOverView = in.readString();
         mVoteAverage = (Double) in.readValue(Double.class.getClassLoader());
         mReleaseDate = in.readString();
+            mID = in.readString();
     }
 
     public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
