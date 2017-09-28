@@ -35,7 +35,7 @@ public class MovieDetailActivity extends AppCompatActivity{
         TextView tvOverView = (TextView) findViewById(R.id.overview);
         TextView tvVoteAverage = (TextView) findViewById(R.id.vote_average);
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
-        ImageView tvID = (ImageView) findViewById(R.id.trailer_video);
+
 
 
         Intent intent = getIntent();
@@ -73,13 +73,8 @@ public class MovieDetailActivity extends AppCompatActivity{
             releaseDate = getResources().getString(R.string.no_release_date_found);
         }
         tvReleaseDate.setText(releaseDate);
-        String ID =movie.getmID();
-        String videoUrl = "http://api.themoviedb.org/3/movie/" + ID + "/videos?api_key="+ API_KEY;
+        String ID = movie.getmID();
 
-
-
-
-        //todo 01  store the id of the movie and then fetch it through asynctask?
     }
 
     }
