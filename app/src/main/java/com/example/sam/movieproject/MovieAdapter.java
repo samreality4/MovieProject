@@ -86,7 +86,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView releaseDate;
         ImageView moviePoster;
         ImageView moviePoster1;
-        TextView mID;
+
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -96,8 +96,6 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             voteAverage = (TextView) itemView.findViewById(R.id.vote_average);
             moviePoster = (ImageView) itemView.findViewById(R.id.left_image1);
             moviePoster1 = (ImageView) itemView.findViewById(R.id.poster);
-            mID = (TextView) itemView.findViewById(R.id.movie_id);
-
 
 
         }

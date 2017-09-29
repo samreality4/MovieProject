@@ -3,34 +3,23 @@ package com.example.sam.movieproject;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.sam.movieproject.model.Movie;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,22 +29,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import retrofit2.http.Url;
-
-import static android.R.attr.data;
-import static android.R.attr.debuggable;
-import static android.R.attr.id;
-import static android.R.attr.listChoiceBackgroundIndicator;
-import static android.provider.Settings.Global.getString;
-import static org.apache.http.params.CoreConnectionPNames.CONNECTION_TIMEOUT;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapter.CustomItemClickListener {
         public static final int CONNECTION_TIMEOUT = 10000;
@@ -157,9 +135,10 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
 
 
     public class AsyncFetch extends AsyncTask<String, Void, String> {
-        ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
+        public ProgressDialog pdLoading = new ProgressDialog(MainActivity.this);
         HttpURLConnection conn;
         URL url = null;
+
 
         @Override
         protected void onPreExecute() {
@@ -226,6 +205,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
             final String TAG_RELEASE_DATE = "release_date";
             final String TAG_ID = "id";
 
+
             pdLoading.dismiss();
 
 
@@ -247,8 +227,10 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                     moviedata.mVoteAverage = json_data.getDouble(TAG_VOTE_AVERAGE);
                     moviedata.mID = json_data.getString(TAG_ID);
 
-
                     list.add(moviedata);
+
+
+
                 }
 
 

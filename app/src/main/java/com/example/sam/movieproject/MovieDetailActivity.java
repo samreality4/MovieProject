@@ -1,8 +1,10 @@
 package com.example.sam.movieproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.Image;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sam.movieproject.model.Movie;
+import com.example.sam.movieproject.model.OtherData;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -23,7 +26,7 @@ import static com.example.sam.movieproject.BuildConfig.API_KEY;
  * Created by sam on 8/23/17.
  */
 
-public class MovieDetailActivity extends AppCompatActivity{
+public class MovieDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,6 @@ public class MovieDetailActivity extends AppCompatActivity{
         TextView tvOverView = (TextView) findViewById(R.id.overview);
         TextView tvVoteAverage = (TextView) findViewById(R.id.vote_average);
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
-
 
 
         Intent intent = getIntent();
@@ -52,7 +54,7 @@ public class MovieDetailActivity extends AppCompatActivity{
         Picasso.with(this)
                 .load(movie.getPosterPath())
                 .resize(185,
-                275)
+                        275)
                 .error(R.drawable.failure)
                 .placeholder(R.drawable.loading)
                 .into(ivPoster);
@@ -68,16 +70,25 @@ public class MovieDetailActivity extends AppCompatActivity{
 
 
         String releaseDate = movie.getmReleaseDate();
-      if(releaseDate == null) {
+        if (releaseDate == null) {
             tvReleaseDate.setTypeface(null, Typeface.BOLD_ITALIC);
             releaseDate = getResources().getString(R.string.no_release_date_found);
         }
         tvReleaseDate.setText(releaseDate);
+
         String ID = movie.getmID();
-
-    }
-
-    }
+        String trailerKeyUrl = "http://api.themoviedb.org/3/movie/" + ID + "/videos?api_key=" + API_KEY;
+        new OtherDataFetch().execute(trailerKeyUrl);}
 
 
+    public void openBrowser(View view) {
+        String url = OtherData.YOUTUBE_TRAILER_LINK;
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+}
 
+
+}
