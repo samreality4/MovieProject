@@ -215,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                 list.clear();
                 JSONObject jobj = new JSONObject(results);
                 JSONArray jArray = jobj.getJSONArray(TAG_RESULTS);
-                Log.i("information", toString().valueOf(jArray));
 
                 for (int i = 0; i < jArray.length(); i++) {
                     JSONObject json_data = jArray.getJSONObject(i);

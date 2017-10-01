@@ -1,24 +1,25 @@
 package com.example.sam.movieproject;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.Image;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sam.movieproject.model.Movie;
 import com.example.sam.movieproject.model.OtherData;
+import com.example.sam.movieproject.remote.APIService;
+import com.example.sam.movieproject.remote.ApiUtils;
+import com.squareup.picasso.Downloader;
 import com.squareup.picasso.Picasso;
 
-import java.text.ParseException;
+import retrofit2.Response;
 
 import static com.example.sam.movieproject.BuildConfig.API_KEY;
 
@@ -28,10 +29,19 @@ import static com.example.sam.movieproject.BuildConfig.API_KEY;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
+    private APIService mAPIService;
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_detailed,menu);
+        return super.onCreateOptionsMenu(menu);}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_details);
+
+
 
         TextView tvOriginalTitle = (TextView) findViewById(R.id.original_title);
         ImageView ivPoster = (ImageView) findViewById(R.id.poster);
@@ -78,7 +88,8 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         String ID = movie.getmID();
         String trailerKeyUrl = "http://api.themoviedb.org/3/movie/" + ID + "/videos?api_key=" + API_KEY;
-        new OtherDataFetch().execute(trailerKeyUrl);}
+
+        mAPIService = ApiUtils.getAPIService();
 
 
     public void openBrowser(View view) {
@@ -89,6 +100,26 @@ public class MovieDetailActivity extends AppCompatActivity {
         intent.setData(Uri.parse(url));
         startActivity(intent);
 }
+public void sendPost(String key) {
+    mAPIService.savePost(key).enqueue(new Callback<Post>(){
+        @Override
+        public void onResponse(Call<Post> call, Response<Post> response) {
+            if(response.isSuccessful()) {
+                showResponse(response.body().toString());
+                Log.i(TAG, "post submitted to API." + reponse.body().toString());
+            }
+        }
+        @Override
+        public void onFailure(Call<Post> call, Throwable t) {
+            Log.e(TAG, "Unable to sumbit post to API");
+        }
+    });
+    public void showResponse(String response) {
+        if(mResponseTv.setText(response));
+    }
+}
 
+
+}
 
 }
