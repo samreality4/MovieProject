@@ -107,7 +107,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
 
         APIService apiService = ApiClient.getClient().create(APIService.class);
-        Call<OtherDataResult> call = apiService.getMovieDetails(ID,API_KEY);
+        Call<OtherDataResult> call = apiService.getMovieTrailer(ID,API_KEY);
         call.enqueue(new Callback<OtherDataResult>() {
             @Override
             public void onResponse(Call<OtherDataResult> call, Response <OtherDataResult> response) {
