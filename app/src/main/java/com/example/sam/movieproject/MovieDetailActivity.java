@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.test.espresso.core.deps.guava.base.Throwables;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,33 +17,47 @@ import android.widget.TextView;
 
 import com.example.sam.movieproject.model.Movie;
 import com.example.sam.movieproject.model.OtherData;
+import com.example.sam.movieproject.model.OtherDataResult;
 import com.example.sam.movieproject.remote.APIService;
-import com.example.sam.movieproject.remote.ApiUtils;
-import com.squareup.picasso.Downloader;
+import com.example.sam.movieproject.remote.ApiClient;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.sam.movieproject.BuildConfig.API_KEY;
+import static android.R.id.list;
 
 /**
  * Created by sam on 8/23/17.
  */
 
-public class MovieDetailActivity extends AppCompatActivity {
+public class MovieDetailActivity extends AppCompatActivity implements OtherDataAdapter.trailerClickListener{
 
-    private APIService mAPIService;
+    private static final String TAG = MovieDetailActivity.class.getSimpleName();
+
+
+    public final String API_KEY = BuildConfig.API_KEY;
+
+   private RecyclerView recyclerView;
+
+    private OtherDataAdapter otherDataAdapter;
+    List<OtherData> trailerList;
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_detailed,menu);
-        return super.onCreateOptionsMenu(menu);}
+        inflater.inflate(R.menu.menu_detailed, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_details);
-
 
 
         TextView tvOriginalTitle = (TextView) findViewById(R.id.original_title);
@@ -87,39 +104,51 @@ public class MovieDetailActivity extends AppCompatActivity {
         tvReleaseDate.setText(releaseDate);
 
         String ID = movie.getmID();
-        String trailerKeyUrl = "http://api.themoviedb.org/3/movie/" + ID + "/videos?api_key=" + API_KEY;
-
-        mAPIService = ApiUtils.getAPIService();
 
 
-    public void openBrowser(View view) {
-        String url = OtherData.YOUTUBE_TRAILER_LINK;
+        APIService apiService = ApiClient.getClient().create(APIService.class);
+        Call<OtherDataResult> call = apiService.getMovieDetails(ID,API_KEY);
+        call.enqueue(new Callback<OtherDataResult>() {
+            @Override
+            public void onResponse(Call<OtherDataResult> call, Response <OtherDataResult> response) {
+                trailerList = response.body().getResults();
+                Log.i("list",response.body().toString());
+
+
+
+
+                otherDataAdapter = new OtherDataAdapter(MovieDetailActivity.this,trailerList);
+                recyclerView = (RecyclerView) findViewById(R.id.thumb_recylerview);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+                recyclerView.setAdapter(otherDataAdapter);
+
+                }
+
+
+
+
+            @Override
+            public void onFailure(Call<OtherDataResult> call, Throwable t) {
+                // Log error here since request failed
+                Log.e(TAG, t.toString());
+            }
+        });
+
+    }
+
+
+    public void onTrailerItemClick(View v, int position) {
+        OtherData otherData = trailerList.get(position);
+        String YOUTUBE_TRAILER_LINK="https://www.youtube.com/watch?v=";
+        String url = YOUTUBE_TRAILER_LINK+otherData.getKey();
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
         intent.setData(Uri.parse(url));
         startActivity(intent);
-}
-public void sendPost(String key) {
-    mAPIService.savePost(key).enqueue(new Callback<Post>(){
-        @Override
-        public void onResponse(Call<Post> call, Response<Post> response) {
-            if(response.isSuccessful()) {
-                showResponse(response.body().toString());
-                Log.i(TAG, "post submitted to API." + reponse.body().toString());
-            }
-        }
-        @Override
-        public void onFailure(Call<Post> call, Throwable t) {
-            Log.e(TAG, "Unable to sumbit post to API");
-        }
-    });
-    public void showResponse(String response) {
-        if(mResponseTv.setText(response));
     }
-}
 
 
 }
 
-}
+

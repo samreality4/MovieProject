@@ -74,12 +74,12 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/youtube_thumb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="openBrowser"
-                android:background="@drawable/common_ic_googleplayservices"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/thumb_recylerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
 
