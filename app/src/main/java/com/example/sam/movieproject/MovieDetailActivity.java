@@ -1,5 +1,6 @@
 package com.example.sam.movieproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.example.sam.movieproject.model.Movie;
 import com.example.sam.movieproject.model.OtherData;
 import com.example.sam.movieproject.model.OtherDataResult;
+import com.example.sam.movieproject.model.Reviews;
 import com.example.sam.movieproject.remote.APIService;
 import com.example.sam.movieproject.remote.ApiClient;
 import com.squareup.picasso.Picasso;
@@ -28,6 +30,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 import static android.R.id.list;
 
@@ -46,6 +49,10 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
     private OtherDataAdapter otherDataAdapter;
     List<OtherData> trailerList;
+    List<Movie> movieList;
+    String keyID;
+
+
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,7 +70,19 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
         TextView tvOriginalTitle = (TextView) findViewById(R.id.original_title);
         ImageView ivPoster = (ImageView) findViewById(R.id.poster);
         TextView tvOverView = (TextView) findViewById(R.id.overview);
+
         TextView tvVoteAverage = (TextView) findViewById(R.id.vote_average);
+        tvVoteAverage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MovieDetailActivity.this,ReviewActivity.class);
+                intent.putExtra("keyID", keyID);
+                Log.i("keyID", keyID);
+                startActivity(intent);
+
+            }
+        });
+
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
 
 
@@ -93,6 +112,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
             overView = getResources().getString(R.string.no_summary_bro);
         }
         tvOverView.setText(overView);
+
         tvVoteAverage.setText(movie.getDetailedVoteAverage());
 
 
@@ -104,6 +124,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
         tvReleaseDate.setText(releaseDate);
 
         String ID = movie.getmID();
+        keyID = movie.getmID();
 
 
         APIService apiService = ApiClient.getClient().create(APIService.class);
@@ -147,6 +168,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
+
 
 
 }
