@@ -10,5 +10,8 @@
         android:id="@+id/top_rated"
         android:icon="@drawable/ic_action_pollclicked"
         app:showAsAction="always"/>
-
+    <item
+        android:id="@+id/favorited_movie"
+        android:icon="@drawable/ic_action_favoritestar"
+        app:showAsAction="always"/>
 </menu>

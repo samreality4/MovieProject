@@ -128,6 +128,25 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                         }
                     }).show();
                 }
+
+            case R.id.favorited_movie:
+                if(isNetworkAvailable()){
+
+                    //TODO 1 add something to make it show the favorite only
+                    Toast toast1 = Toast.makeText(context,"Favorite Movies", Toast.LENGTH_SHORT);
+                    toast1.show();
+                    return true;}else{
+                    final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                            "No internet connection.",
+                            Snackbar.LENGTH_SHORT);
+                    snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(),
+                            R.color.colorPrimary));
+                    snackbar.setAction(R.string.try_again, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                        }
+                    }).show();
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }

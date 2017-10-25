@@ -1,10 +1,14 @@
 package com.example.sam.movieproject;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.test.espresso.core.deps.guava.base.Throwables;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,9 +16,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sam.movieproject.model.Movie;
 import com.example.sam.movieproject.model.OtherData;
@@ -32,6 +40,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
+import static android.R.id.checkbox;
 import static android.R.id.list;
 
 /**
@@ -39,6 +48,7 @@ import static android.R.id.list;
  */
 
 public class MovieDetailActivity extends AppCompatActivity implements OtherDataAdapter.trailerClickListener{
+    List<Movie> list = new ArrayList<>();
 
     private static final String TAG = MovieDetailActivity.class.getSimpleName();
 
@@ -51,37 +61,38 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
     List<OtherData> trailerList;
     List<Movie> movieList;
     String keyID;
+    String title;
+    String overView;
+    String releaseDate;
+    String votingAverage;
+    Context context;
+
+//todo add onitemselectedlistener to listen to the state.
 
 
-
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_detailed, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.movie_details);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.movie_details);
 
 
-        TextView tvOriginalTitle = (TextView) findViewById(R.id.original_title);
-        ImageView ivPoster = (ImageView) findViewById(R.id.poster);
-        TextView tvOverView = (TextView) findViewById(R.id.overview);
+            TextView tvOriginalTitle = (TextView) findViewById(R.id.original_title);
+            ImageView ivPoster = (ImageView) findViewById(R.id.poster);
+            TextView tvOverView = (TextView) findViewById(R.id.overview);
+            TextView tvVoteAverage = (TextView) findViewById(R.id.vote_average);
 
-        TextView tvVoteAverage = (TextView) findViewById(R.id.vote_average);
-        tvVoteAverage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MovieDetailActivity.this,ReviewActivity.class);
-                intent.putExtra("keyID", keyID);
-                Log.i("keyID", keyID);
-                startActivity(intent);
+            Button readReview = (Button) findViewById(R.id.read_reviews);
+            readReview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MovieDetailActivity.this, ReviewActivity.class);
+                    intent.putExtra("keyID", keyID);
+                    Log.i("keyID", keyID);
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
+
 
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
 
@@ -89,12 +100,14 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
         Intent intent = getIntent();
         Movie movie = intent.getParcelableExtra("Movie");
 
-        String title = movie.getmTitle();
+        title = movie.getmTitle();
+
         if (title == null) {
             tvOriginalTitle.setTypeface(null, Typeface.BOLD_ITALIC);
         }
 
-        tvOriginalTitle.setText(movie.getmTitle());
+        tvOriginalTitle.setText(title);
+
 
 
         Picasso.with(this)
@@ -106,17 +119,18 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
                 .into(ivPoster);
 
 
-        String overView = movie.getmOverView();
+        overView = movie.getmOverView();
         if (overView == null) {
             tvOverView.setTypeface(null, Typeface.BOLD_ITALIC);
             overView = getResources().getString(R.string.no_summary_bro);
         }
         tvOverView.setText(overView);
 
-        tvVoteAverage.setText(movie.getDetailedVoteAverage());
+        votingAverage = movie.getDetailedVoteAverage();
 
+        tvVoteAverage.setText(votingAverage);
 
-        String releaseDate = movie.getmReleaseDate();
+            releaseDate = movie.getmReleaseDate();
         if (releaseDate == null) {
             tvReleaseDate.setTypeface(null, Typeface.BOLD_ITALIC);
             releaseDate = getResources().getString(R.string.no_release_date_found);
@@ -155,7 +169,47 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
             }
         });
 
+            final CheckBox checkBox = (CheckBox) findViewById(R.id.favorited_checkBox);
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            final SharedPreferences.Editor editor = preferences.edit();
+            if (preferences.contains("checked"+ keyID) && preferences.getBoolean("checked" + keyID, false)) {
+                checkBox.setChecked(true);
+            } else {
+                checkBox.setChecked(false);
+            }
+
+
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (checkBox.isChecked()) {
+                        editor.putBoolean("checked" + keyID, true);
+                        editor.apply();
+                        FavoriteMovieHelper mFmHelper = new FavoriteMovieHelper(getApplicationContext());
+                        SQLiteDatabase db = mFmHelper.getWritableDatabase();
+
+                        ContentValues values = new ContentValues();
+                        values.put(FavorContract.MovieEntry.KEY_FAVOR_ID,keyID);
+                        values.put(FavorContract.MovieEntry.KEY_FAVOR_OVERVIEW,overView);
+                        values.put(FavorContract.MovieEntry.KEY_FAVOR_TITLE, title);
+                        values.put(FavorContract.MovieEntry.KEY_RELEASE_DATE, releaseDate);
+                        values.put(FavorContract.MovieEntry.KEY_VOTING_AVERAGE,votingAverage);
+
+                        db.insert(FavorContract.MovieEntry.TABLE_FAVOR,null, values);
+                        db.close();
+
+                    } else {
+                        editor.putBoolean("checked" + keyID, false);
+                        editor.apply();
+                    }
+
+
+                }
+            });
+
     }
+
+
 
 
     public void onTrailerItemClick(View v, int position) {

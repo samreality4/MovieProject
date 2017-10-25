@@ -30,13 +30,31 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"/>
+
+                <CheckBox
+                    android:id="@+id/favorited_checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:button="@drawable/favorite_star_selector" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/release_date_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Release Date"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,7 +64,7 @@
                 android:paddingEnd="2dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="2dp"
-                android:textSize="20dp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/vote_average_title"
@@ -54,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:text="Voting Average"
-                android:textSize="@dimen/abc_text_size_medium_material"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -64,7 +82,15 @@
                 android:paddingEnd="2dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="2dp"
-                android:textSize="20dp" />
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/read_reviews"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Read Reviews"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/trailer_title"
@@ -76,9 +102,9 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/thumb_recylerview"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             </android.support.v7.widget.RecyclerView>
 
