@@ -26,14 +26,14 @@ public class FavorContract {
         public static final String KEY_RELEASE_DATE = "release_date";
 
         public static String CREATE_FAVORITE_TABLE = "CREATE TABLE " + TABLE_FAVOR +
-                " (" + _ID + " INTEGER PRIMARY KEY," + KEY_FAVOR_ID + KEY_FAVOR_POSTER + " TEXT,"
+                " (" + _ID + " INTEGER PRIMARY KEY," + KEY_FAVOR_ID + " TEXT,"+ KEY_FAVOR_POSTER + " TEXT,"
                 + " TEXT," + KEY_FAVOR_TITLE + " TEXT," + KEY_FAVOR_OVERVIEW + " TEXT,"
                 + KEY_VOTING_AVERAGE + " TEXT," + KEY_RELEASE_DATE + " TEXT)";
         public static String[] Columns = new String[]{_ID, KEY_FAVOR_ID, KEY_FAVOR_POSTER, KEY_FAVOR_POSTER, KEY_FAVOR_OVERVIEW, KEY_VOTING_AVERAGE, KEY_RELEASE_DATE
 
         };
 
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_TASKS).build();
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_FAVOR).build();
         public static final String CONTENT_DIR_TYPE =
                 ContentResolver.CURSOR_DIR_BASE_TYPE + "/"  + AUTHORITY + "/" + TABLE_FAVOR;
         public static final String CONTENT_ITEM_TYPE=

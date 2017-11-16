@@ -183,6 +183,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
 
                         ContentValues values = new ContentValues();
+                        Movie movie = movieList.getPosition();
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_ID,keyID);
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_OVERVIEW,overView);
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_TITLE, title);
@@ -197,7 +198,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
                         editor.putBoolean("checked" + keyID, false);
                         editor.apply();
 
-                        db.delete(FavorContract.MovieEntry.TABLE_FAVOR, keyID + "=?", new String[]{keyID} );
+                        db.delete(FavorContract.MovieEntry.TABLE_FAVOR, keyID + "= ?", new String[]{keyID} );
                         db.close();
                     }
 
