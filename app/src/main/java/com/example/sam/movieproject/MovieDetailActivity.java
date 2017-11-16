@@ -9,25 +9,21 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.test.espresso.core.deps.guava.base.Throwables;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.sam.movieproject.database.FavorContract;
+import com.example.sam.movieproject.database.FavoriteMovieHelper;
 import com.example.sam.movieproject.model.Movie;
 import com.example.sam.movieproject.model.OtherData;
 import com.example.sam.movieproject.model.OtherDataResult;
-import com.example.sam.movieproject.model.Reviews;
 import com.example.sam.movieproject.remote.APIService;
 import com.example.sam.movieproject.remote.ApiClient;
 import com.squareup.picasso.Picasso;
@@ -38,10 +34,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-
-import static android.R.id.checkbox;
-import static android.R.id.list;
 
 /**
  * Created by sam on 8/23/17.
@@ -65,9 +57,10 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
     String overView;
     String releaseDate;
     String votingAverage;
+    String posterPath;
     Context context;
 
-//todo add onitemselectedlistener to listen to the state.
+
 
 
         @Override
@@ -108,10 +101,10 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
         tvOriginalTitle.setText(title);
 
-
+         posterPath = movie.getPosterPath();
 
         Picasso.with(this)
-                .load(movie.getPosterPath())
+                .load(posterPath)
                 .resize(185,
                         275)
                 .error(R.drawable.failure)
@@ -182,11 +175,12 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    FavoriteMovieHelper mFmHelper = new FavoriteMovieHelper(getApplicationContext());
+                    SQLiteDatabase db = mFmHelper.getWritableDatabase();
                     if (checkBox.isChecked()) {
                         editor.putBoolean("checked" + keyID, true);
                         editor.apply();
-                        FavoriteMovieHelper mFmHelper = new FavoriteMovieHelper(getApplicationContext());
-                        SQLiteDatabase db = mFmHelper.getWritableDatabase();
+
 
                         ContentValues values = new ContentValues();
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_ID,keyID);
@@ -194,6 +188,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_TITLE, title);
                         values.put(FavorContract.MovieEntry.KEY_RELEASE_DATE, releaseDate);
                         values.put(FavorContract.MovieEntry.KEY_VOTING_AVERAGE,votingAverage);
+                        values.put(FavorContract.MovieEntry.KEY_FAVOR_POSTER,posterPath);
 
                         db.insert(FavorContract.MovieEntry.TABLE_FAVOR,null, values);
                         db.close();
@@ -201,6 +196,9 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
                     } else {
                         editor.putBoolean("checked" + keyID, false);
                         editor.apply();
+
+                        db.delete(FavorContract.MovieEntry.TABLE_FAVOR, keyID + "=?", new String[]{keyID} );
+                        db.close();
                     }
 
 

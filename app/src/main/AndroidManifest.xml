@@ -35,9 +35,13 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-    </application>
+
     <provider
-        android:name="com.example.sam.movieproject"
-        android:authorities="com.example.sam.movieproject.FavorProvider"
-        android:exported="false"/>
+        android:name=".database.FavorProvider"
+        android:authorities="com.example.sam.movieproject"
+        android:exported="false"
+        android:protectionLevel="signature"
+        android:syncable="true"/>
+</application>
+
 </manifest>

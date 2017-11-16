@@ -3,12 +3,16 @@ package com.example.sam.movieproject;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.sam.movieproject.database.FavorContract;
 import com.example.sam.movieproject.model.Movie;
 
 import org.json.JSONArray;
@@ -35,13 +40,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MovieAdapter.CustomItemClickListener {
+
+
+public class MainActivity extends AppCompatActivity implements MovieAdapter.CustomItemClickListener, LoaderManager.LoaderCallbacks<Cursor>{
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
         private RecyclerView moviePostersList;
         private MovieAdapter movieAdapter;
         Context context;
         List<Movie> list = new ArrayList<>();
+        List <Movie> movies = new ArrayList<>();
         public final String API_KEY = BuildConfig.API_KEY;
         String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key="+API_KEY+"&sort_by=vote_average.desc&most_popular.desc&append_to_response=video";
         String url2 = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY+"&append_to_response=video";
@@ -131,8 +139,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
 
             case R.id.favorited_movie:
                 if(isNetworkAvailable()){
+                    getSupportLoaderManager().initLoader(0, null, this);
 
-                    //TODO 1 add something to make it show the favorite only
                     Toast toast1 = Toast.makeText(context,"Favorite Movies", Toast.LENGTH_SHORT);
                     toast1.show();
                     return true;}else{
@@ -150,6 +158,34 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+       return new CursorLoader(this,
+               FavorContract.MovieEntry.CONTENT_URI,
+               null,
+               null,
+               null,
+               null);
+        }
+
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        moviesFromCursor(data);
+        moviePostersList = (RecyclerView) findViewById(R.id.poster_pix);
+        movieAdapter = new MovieAdapter(MainActivity.this, movies);
+        moviePostersList.setLayoutManager(new GridLayoutManager(context, 2));
+        moviePostersList.setAdapter(movieAdapter);
+        }
+
+
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
     }
 
 
@@ -274,10 +310,32 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    private List<Movie> moviesFromCursor(Cursor cursor){
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()){
+                do{
+                    Movie movie = new Movie();
+                    movie.mID = cursor.getString(cursor.getColumnIndex(FavorContract.MovieEntry.KEY_FAVOR_ID));
+                    movie.mPoster= cursor.getString(cursor.getColumnIndex(FavorContract.MovieEntry.KEY_FAVOR_POSTER));
+                    movie.mOverView = cursor.getString(cursor.getColumnIndex(FavorContract.MovieEntry.KEY_FAVOR_OVERVIEW));
+                    movie.mReleaseDate=cursor.getString(cursor.getColumnIndex(FavorContract.MovieEntry.KEY_RELEASE_DATE));
+                    movie.mTitle=cursor.getString(cursor.getColumnIndex(FavorContract.MovieEntry.KEY_FAVOR_TITLE));
+                    movie.mVoteAverage = cursor.getDouble(cursor.getColumnIndex(FavorContract.MovieEntry.KEY_VOTING_AVERAGE));
+
+
+                    movies.add(movie);
+                }while(cursor.moveToNext());
+            }
+        }
+        return movies;
+    }
+
 
 }
 
-
+//todo create a fragment activty and call it when optionclicked.  Can still use the old movie adapater.
+//todo 2
 
 
 
