@@ -334,8 +334,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
 
 }
 
-//todo create a fragment activty and call it when optionclicked.  Can still use the old movie adapater.
-//todo 2
+//todo someehting is wrong with the content provider
 
 
 
