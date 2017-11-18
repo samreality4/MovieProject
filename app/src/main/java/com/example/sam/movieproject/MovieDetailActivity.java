@@ -51,14 +51,14 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
     private OtherDataAdapter otherDataAdapter;
     List<OtherData> trailerList;
-    List<Movie> movieList;
     String keyID;
     String title;
     String overView;
     String releaseDate;
     String votingAverage;
     String posterPath;
-    Context context;
+    String TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w185";
+
 
 
 
@@ -91,7 +91,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
 
         Intent intent = getIntent();
-        Movie movie = intent.getParcelableExtra("Movie");
+        final Movie movie = intent.getParcelableExtra("Movie");
 
         title = movie.getmTitle();
 
@@ -103,8 +103,9 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
          posterPath = movie.getPosterPath();
 
+
         Picasso.with(this)
-                .load(posterPath)
+                .load(TMDB_POSTER_BASE_URL + posterPath)
                 .resize(185,
                         275)
                 .error(R.drawable.failure)
@@ -175,15 +176,14 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     FavoriteMovieHelper mFmHelper = new FavoriteMovieHelper(getApplicationContext());
                     SQLiteDatabase db = mFmHelper.getWritableDatabase();
                     if (checkBox.isChecked()) {
                         editor.putBoolean("checked" + keyID, true);
                         editor.apply();
 
-
                         ContentValues values = new ContentValues();
-                        Movie movie = movieList.getPosition();
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_ID,keyID);
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_OVERVIEW,overView);
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_TITLE, title);
@@ -191,8 +191,12 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
                         values.put(FavorContract.MovieEntry.KEY_VOTING_AVERAGE,votingAverage);
                         values.put(FavorContract.MovieEntry.KEY_FAVOR_POSTER,posterPath);
 
-                        db.insert(FavorContract.MovieEntry.TABLE_FAVOR,null, values);
-                        db.close();
+                        getContentResolver().insert(FavorContract.MovieEntry.CONTENT_URI, values);
+
+                        Log.i("values",String.valueOf(values));
+
+                        //db.insert(FavorContract.MovieEntry.TABLE_FAVOR,null, values);
+                        //db.close();
 
                     } else {
                         editor.putBoolean("checked" + keyID, false);

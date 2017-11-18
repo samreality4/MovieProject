@@ -23,8 +23,12 @@ public class Movie implements Parcelable{
     public String mPoster;
 
     public String getPosterPath() {
+        return mPoster;
+    }
+    public String getFullPosterLink(){
         final String TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w185";
         return TMDB_POSTER_BASE_URL + mPoster;
+
     }
 
     public String mOverView;

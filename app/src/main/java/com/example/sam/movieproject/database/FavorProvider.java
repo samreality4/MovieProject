@@ -42,7 +42,7 @@ public class FavorProvider extends ContentProvider {
     @Override
     synchronized public Cursor query(@NonNull Uri uri, String[] projection, String selection,
                                      String[] selectionArgs, String sortOrder){
-        final SQLiteDatabase db = mSqliteOpenHelper.getWritableDatabase();
+        final SQLiteDatabase db = mSqliteOpenHelper.getReadableDatabase();
         Cursor mCursor;
 
         switch (sUriMatcher.match(uri)){
@@ -81,9 +81,28 @@ public class FavorProvider extends ContentProvider {
 }
 
 @Override
-    public Uri insert(@NonNull Uri uri, ContentValues values) {
-return null;
-}
+    public Uri insert(Uri uri, ContentValues values) {
+    final SQLiteDatabase db = mSqliteOpenHelper.getWritableDatabase();
+    long _id;
+    Uri returnUri;
+
+    switch (sUriMatcher.match(uri)) {
+        case MOVIE:
+            _id = db.insert(FavorContract.MovieEntry.TABLE_FAVOR, null, values);
+            if (_id > 0) {
+                returnUri = FavorContract.MovieEntry.buildMovieUri(_id);
+            } else {
+                throw new UnsupportedOperationException("Unable to insert rows into: " + uri);
+
+            }
+            break;
+            default:
+                throw new UnsupportedOperationException("unknow uri: " + uri);
+        }
+    return returnUri;
+
+    }
+
 
 @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs){

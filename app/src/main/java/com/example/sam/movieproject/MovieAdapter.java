@@ -29,6 +29,8 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private LayoutInflater inflater;
     private List<Movie> mData;
     public CustomItemClickListener listener;
+    String TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w185";
+
 
 
     public interface CustomItemClickListener {
@@ -64,8 +66,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         MyHolder myHolder = (MyHolder) holder;
         Movie current = mData.get(position);
 
+
         Picasso.with(mContext)
-                .load(current.getPosterPath())
+                .load(TMDB_POSTER_BASE_URL + current.getPosterPath())
                 .resize(185, 278)
                 .error(R.drawable.failure)
                 .placeholder(R.drawable.loading)

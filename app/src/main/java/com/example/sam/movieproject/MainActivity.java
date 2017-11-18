@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         moviesFromCursor(data);
-        moviePostersList = (RecyclerView) findViewById(R.id.poster_pix);
         movieAdapter = new MovieAdapter(MainActivity.this, movies);
+        moviePostersList = (RecyclerView) findViewById(R.id.poster_pix);
         moviePostersList.setLayoutManager(new GridLayoutManager(context, 2));
         moviePostersList.setAdapter(movieAdapter);
         }
