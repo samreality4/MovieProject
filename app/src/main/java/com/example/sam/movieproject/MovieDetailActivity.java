@@ -60,9 +60,6 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
     String TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w185";
 
 
-
-
-
         @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -91,9 +88,11 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
 
         Intent intent = getIntent();
-        final Movie movie = intent.getParcelableExtra("Movie");
+
+        final Movie movie = intent.getParcelableExtra();
 
         title = movie.getmTitle();
+
 
         if (title == null) {
             tvOriginalTitle.setTypeface(null, Typeface.BOLD_ITALIC);
@@ -101,7 +100,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
         tvOriginalTitle.setText(title);
 
-         posterPath = movie.getPosterPath();
+            posterPath = movie.getPosterPath();
 
 
         Picasso.with(this)

@@ -83,7 +83,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
     public void onItemClick(View v, int position) {
         Intent intent = new Intent(this, MovieDetailActivity.class);
         Movie movie = list.get(position);
-        intent.putExtra("Movie", movie);
+        Movie cursormovie = movies.get(position);
+        Bundle bund = new Bundle();
+        bund.putParcelable("Movie", movie);
+        bund.putParcelable("Movies", cursormovie);
+        intent.putExtras(bund);
         startActivity(intent);
         Log.d("clicked position:", String.valueOf(position));
 
