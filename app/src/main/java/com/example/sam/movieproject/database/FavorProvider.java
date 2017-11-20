@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import com.example.sam.movieproject.MovieDetailActivity;
+
 /**
  * Created by sam on 10/18/17.
  */
@@ -106,6 +108,9 @@ public class FavorProvider extends ContentProvider {
 
 @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs){
+    final SQLiteDatabase db = mSqliteOpenHelper.getWritableDatabase();
+    db.delete(FavorContract.MovieEntry.TABLE_FAVOR, MovieDetailActivity.keyID + "= ?", new String[]{MovieDetailActivity.keyID} );
+    db.close();
     return -1;
 }
     @Override

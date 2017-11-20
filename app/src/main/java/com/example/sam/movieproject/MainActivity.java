@@ -42,14 +42,15 @@ import java.util.List;
 
 
 
-public class MainActivity extends AppCompatActivity implements MovieAdapter.CustomItemClickListener, LoaderManager.LoaderCallbacks<Cursor>{
+public class MainActivity extends AppCompatActivity implements MovieAdapter.CustomItemClickListener, CursorAdapter.CustomCursorItemClickListener,LoaderManager.LoaderCallbacks<Cursor>{
         public static final int CONNECTION_TIMEOUT = 10000;
         public static final int READ_TIMEOUT = 15000;
         private RecyclerView moviePostersList;
         private MovieAdapter movieAdapter;
+        private CursorAdapter cursorAdapter;
         Context context;
         List<Movie> list = new ArrayList<>();
-        List <Movie> movies = new ArrayList<>();
+        List<Movie> cursorlist = new ArrayList<>();
         public final String API_KEY = BuildConfig.API_KEY;
         String url1 = "https://api.themoviedb.org/3/movie/top_rated?api_key="+API_KEY+"&sort_by=vote_average.desc&most_popular.desc&append_to_response=video";
         String url2 = "http://api.themoviedb.org/3/movie/popular?api_key="+API_KEY+"&append_to_response=video";
@@ -83,15 +84,36 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
     public void onItemClick(View v, int position) {
         Intent intent = new Intent(this, MovieDetailActivity.class);
         Movie movie = list.get(position);
-        Movie cursormovie = movies.get(position);
-        Bundle bund = new Bundle();
-        bund.putParcelable("Movie", movie);
-        bund.putParcelable("Movies", cursormovie);
-        intent.putExtras(bund);
+        intent.putExtra("Movie", movie);
         startActivity(intent);
         Log.d("clicked position:", String.valueOf(position));
 
     }
+
+   /* public Movie getListPosition(int position){
+
+
+        Movie movie;
+        String error = null;
+        
+                try {
+            cursorlist.get(position);
+        } catch (IndexOutOfBoundsException e)
+
+        {error = ("not good");}
+
+
+            if (error == "not good"){
+
+            movie =list.get(position);
+        } else{
+
+            movie = cursorlist.get(position);
+        }
+        return movie;
+    }*/
+//todo make another way is to make another adatper and onlick
+
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -178,11 +200,12 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        cursorlist.clear();
         moviesFromCursor(data);
-        movieAdapter = new MovieAdapter(MainActivity.this, movies);
+        cursorAdapter = new CursorAdapter(MainActivity.this, cursorlist);
         moviePostersList = (RecyclerView) findViewById(R.id.poster_pix);
         moviePostersList.setLayoutManager(new GridLayoutManager(context, 2));
-        moviePostersList.setAdapter(movieAdapter);
+        moviePostersList.setAdapter(cursorAdapter);
         }
 
 
@@ -190,6 +213,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
+    }
+
+    @Override
+    public void onCursorItemClick(View v, int position) {
+        Intent intent = new Intent(this, MovieDetailActivity.class);
+        Movie movie = cursorlist.get(position);
+        intent.putExtra("Movie", movie);
+        startActivity(intent);
     }
 
 
@@ -327,12 +358,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                     movie.mTitle=cursor.getString(cursor.getColumnIndex(FavorContract.MovieEntry.KEY_FAVOR_TITLE));
                     movie.mVoteAverage = cursor.getDouble(cursor.getColumnIndex(FavorContract.MovieEntry.KEY_VOTING_AVERAGE));
 
-
-                    movies.add(movie);
+                    cursorlist.add(movie);
                 }while(cursor.moveToNext());
             }
         }
-        return movies;
+        return cursorlist;
     }
 
 

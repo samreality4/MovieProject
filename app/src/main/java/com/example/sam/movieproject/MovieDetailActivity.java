@@ -51,7 +51,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
     private OtherDataAdapter otherDataAdapter;
     List<OtherData> trailerList;
-    String keyID;
+    public static String keyID;
     String title;
     String overView;
     String releaseDate;
@@ -87,13 +87,57 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
         TextView tvReleaseDate = (TextView) findViewById(R.id.release_date);
 
 
-        Intent intent = getIntent();
+            Intent intent = getIntent();
 
-        final Movie movie = intent.getParcelableExtra();
-
-        title = movie.getmTitle();
+            final Movie movie = intent.getParcelableExtra("Movie");
 
 
+
+            /*if(movie == null) {
+
+                final Movie movie1 = intent.getParcelableExtra("CursorMovie");
+                title = movie1.getmTitle();
+                if (title == null) {
+                    tvOriginalTitle.setTypeface(null, Typeface.BOLD_ITALIC);
+                }
+
+                tvOriginalTitle.setText(title);
+
+                posterPath = movie1.getPosterPath();
+
+
+                Picasso.with(this)
+                        .load(TMDB_POSTER_BASE_URL + posterPath)
+                        .resize(185,
+                                275)
+                        .error(R.drawable.failure)
+                        .placeholder(R.drawable.loading)
+                        .into(ivPoster);
+
+
+                overView = movie1.getmOverView();
+                if (overView == null) {
+                    tvOverView.setTypeface(null, Typeface.BOLD_ITALIC);
+                    overView = getResources().getString(R.string.no_summary_bro);
+                }
+                tvOverView.setText(overView);
+
+                votingAverage = movie1.getDetailedVoteAverage();
+
+                tvVoteAverage.setText(votingAverage);
+
+                releaseDate = movie1.getmReleaseDate();
+                if (releaseDate == null) {
+                    tvReleaseDate.setTypeface(null, Typeface.BOLD_ITALIC);
+                    releaseDate = getResources().getString(R.string.no_release_date_found);
+                }
+                tvReleaseDate.setText(releaseDate);
+
+                keyID = movie1.getmID();
+
+            }*/
+
+          title = movie.getmTitle();
         if (title == null) {
             tvOriginalTitle.setTypeface(null, Typeface.BOLD_ITALIC);
         }
@@ -130,12 +174,15 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
         }
         tvReleaseDate.setText(releaseDate);
 
-        String ID = movie.getmID();
+
         keyID = movie.getmID();
 
 
+
+
+
         APIService apiService = ApiClient.getClient().create(APIService.class);
-        Call<OtherDataResult> call = apiService.getMovieTrailer(ID,API_KEY);
+        Call<OtherDataResult> call = apiService.getMovieTrailer(keyID,API_KEY);
         call.enqueue(new Callback<OtherDataResult>() {
             @Override
             public void onResponse(Call<OtherDataResult> call, Response <OtherDataResult> response) {
@@ -201,8 +248,7 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
                         editor.putBoolean("checked" + keyID, false);
                         editor.apply();
 
-                        db.delete(FavorContract.MovieEntry.TABLE_FAVOR, keyID + "= ?", new String[]{keyID} );
-                        db.close();
+                        getContentResolver().delete(FavorContract.MovieEntry.CONTENT_URI, keyID, null);
                     }
 
 
