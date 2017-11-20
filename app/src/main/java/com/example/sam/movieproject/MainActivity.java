@@ -167,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
                 if(isNetworkAvailable()){
                     getSupportLoaderManager().initLoader(0, null, this);
 
+
                     Toast toast1 = Toast.makeText(context,"Favorite Movies", Toast.LENGTH_SHORT);
                     toast1.show();
                     return true;}else{
@@ -206,12 +207,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         moviePostersList = (RecyclerView) findViewById(R.id.poster_pix);
         moviePostersList.setLayoutManager(new GridLayoutManager(context, 2));
         moviePostersList.setAdapter(cursorAdapter);
+        cursorAdapter.swapCursor(data);
         }
 
 
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+        cursorAdapter.swapCursor(null);
 
     }
 
@@ -368,7 +371,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
 
 }
 
-//todo someehting is wrong with the content provider
+
 
 
 

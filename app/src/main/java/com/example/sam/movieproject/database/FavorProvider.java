@@ -1,9 +1,11 @@
 package com.example.sam.movieproject.database;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -11,6 +13,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import com.example.sam.movieproject.MovieDetailActivity;
+
+import java.net.URI;
 
 /**
  * Created by sam on 10/18/17.
@@ -56,13 +60,19 @@ public class FavorProvider extends ContentProvider {
                         null,
                         null,
                         sortOrder);
-                return mCursor;
+                break;
+
+
             }
 
             default:
                 throw new IllegalArgumentException("uri not recognized!");
 
+
+
         }
+        mCursor.setNotificationUri(getContext().getContentResolver(), uri);
+        return mCursor;
 
     }
 @Override
@@ -88,11 +98,15 @@ public class FavorProvider extends ContentProvider {
     long _id;
     Uri returnUri;
 
+
     switch (sUriMatcher.match(uri)) {
         case MOVIE:
             _id = db.insert(FavorContract.MovieEntry.TABLE_FAVOR, null, values);
             if (_id > 0) {
                 returnUri = FavorContract.MovieEntry.buildMovieUri(_id);
+                db.close();
+
+
             } else {
                 throw new UnsupportedOperationException("Unable to insert rows into: " + uri);
 
@@ -101,18 +115,32 @@ public class FavorProvider extends ContentProvider {
             default:
                 throw new UnsupportedOperationException("unknow uri: " + uri);
         }
+    getContext().getContentResolver().notifyChange(uri, null);
     return returnUri;
 
     }
 
 
 @Override
-    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs){
+    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
     final SQLiteDatabase db = mSqliteOpenHelper.getWritableDatabase();
-    db.delete(FavorContract.MovieEntry.TABLE_FAVOR, MovieDetailActivity.keyID + "= ?", new String[]{MovieDetailActivity.keyID} );
-    db.close();
-    return -1;
+    int rows = 0;
+    switch (sUriMatcher.match(uri)) {
+        case MOVIE:
+            db.delete(FavorContract.MovieEntry.TABLE_FAVOR, selection, selectionArgs);
+            break;
+        default:
+            throw new UnsupportedOperationException("unknown uri" + uri);
+    }
+
+
+        getContext().getContentResolver().notifyChange(uri, null);
+
+
+    return rows;
 }
+
+
     @Override
     public int update(@NonNull Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 

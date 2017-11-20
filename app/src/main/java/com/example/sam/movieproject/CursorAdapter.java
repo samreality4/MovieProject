@@ -1,6 +1,7 @@
 package com.example.sam.movieproject;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class CursorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private List<Movie> mData;
     public CursorAdapter.CustomCursorItemClickListener listener;
     String TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w185";
+    Cursor mCursor;
 
 
 
@@ -96,6 +98,10 @@ public class CursorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
         }
+    }
+    public void swapCursor(Cursor newCursor){
+        mCursor = newCursor;
+        notifyDataSetChanged();
     }
 
 }

@@ -223,8 +223,6 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
                 @Override
                 public void onClick(View v) {
 
-                    FavoriteMovieHelper mFmHelper = new FavoriteMovieHelper(getApplicationContext());
-                    SQLiteDatabase db = mFmHelper.getWritableDatabase();
                     if (checkBox.isChecked()) {
                         editor.putBoolean("checked" + keyID, true);
                         editor.apply();
@@ -241,14 +239,13 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
                         Log.i("values",String.valueOf(values));
 
-                        //db.insert(FavorContract.MovieEntry.TABLE_FAVOR,null, values);
-                        //db.close();
+
 
                     } else {
                         editor.putBoolean("checked" + keyID, false);
                         editor.apply();
 
-                        getContentResolver().delete(FavorContract.MovieEntry.CONTENT_URI, keyID, null);
+                        getContentResolver().delete(FavorContract.MovieEntry.CONTENT_URI,  "id=?", new String[]{String.valueOf(keyID)});
                     }
 
 
