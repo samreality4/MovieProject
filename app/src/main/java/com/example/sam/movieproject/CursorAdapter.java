@@ -25,7 +25,6 @@ public class CursorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private List<Movie> mData;
     public CursorAdapter.CustomCursorItemClickListener listener;
     String TMDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/w185";
-    Cursor mCursor;
 
 
 
@@ -99,10 +98,7 @@ public class CursorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         }
     }
-    public void swapCursor(Cursor newCursor){
-        mCursor = newCursor;
-        notifyDataSetChanged();
-    }
+
 
 }
 

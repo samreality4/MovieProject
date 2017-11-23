@@ -44,9 +44,6 @@ public class ReviewActivity extends AppCompatActivity{
         String ID = (String) intent.getExtras().get("keyID");
 
 
-
-
-
         APIService apiService = ApiClient.getClient().create(APIService.class);
         Call<ReviewsResults> call = apiService.getMovieReviews(ID, API_KEY);
         call.enqueue(new Callback<ReviewsResults>() {

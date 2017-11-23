@@ -90,32 +90,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
 
     }
 
-   /* public Movie getListPosition(int position){
-
-
-        Movie movie;
-        String error = null;
-        
-                try {
-            cursorlist.get(position);
-        } catch (IndexOutOfBoundsException e)
-
-        {error = ("not good");}
-
-
-            if (error == "not good"){
-
-            movie =list.get(position);
-        } else{
-
-            movie = cursorlist.get(position);
-        }
-        return movie;
-    }*/
-//todo make another way is to make another adatper and onlick
-
-
-
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main,menu);
@@ -207,14 +181,12 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         moviePostersList = (RecyclerView) findViewById(R.id.poster_pix);
         moviePostersList.setLayoutManager(new GridLayoutManager(context, 2));
         moviePostersList.setAdapter(cursorAdapter);
-        cursorAdapter.swapCursor(data);
         }
 
 
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        cursorAdapter.swapCursor(null);
 
     }
 
@@ -367,10 +339,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         }
         return cursorlist;
     }
+    @Override
+    public void onStop(){
+        super.onStop();
+        getSupportLoaderManager().destroyLoader(0);
+    }
 
 
 }
-
 
 
 

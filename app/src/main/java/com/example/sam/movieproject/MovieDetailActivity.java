@@ -40,7 +40,7 @@ import retrofit2.Response;
  */
 
 public class MovieDetailActivity extends AppCompatActivity implements OtherDataAdapter.trailerClickListener{
-    List<Movie> list = new ArrayList<>();
+
 
     private static final String TAG = MovieDetailActivity.class.getSimpleName();
 
@@ -91,52 +91,6 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
             final Movie movie = intent.getParcelableExtra("Movie");
 
-
-
-            /*if(movie == null) {
-
-                final Movie movie1 = intent.getParcelableExtra("CursorMovie");
-                title = movie1.getmTitle();
-                if (title == null) {
-                    tvOriginalTitle.setTypeface(null, Typeface.BOLD_ITALIC);
-                }
-
-                tvOriginalTitle.setText(title);
-
-                posterPath = movie1.getPosterPath();
-
-
-                Picasso.with(this)
-                        .load(TMDB_POSTER_BASE_URL + posterPath)
-                        .resize(185,
-                                275)
-                        .error(R.drawable.failure)
-                        .placeholder(R.drawable.loading)
-                        .into(ivPoster);
-
-
-                overView = movie1.getmOverView();
-                if (overView == null) {
-                    tvOverView.setTypeface(null, Typeface.BOLD_ITALIC);
-                    overView = getResources().getString(R.string.no_summary_bro);
-                }
-                tvOverView.setText(overView);
-
-                votingAverage = movie1.getDetailedVoteAverage();
-
-                tvVoteAverage.setText(votingAverage);
-
-                releaseDate = movie1.getmReleaseDate();
-                if (releaseDate == null) {
-                    tvReleaseDate.setTypeface(null, Typeface.BOLD_ITALIC);
-                    releaseDate = getResources().getString(R.string.no_release_date_found);
-                }
-                tvReleaseDate.setText(releaseDate);
-
-                keyID = movie1.getmID();
-
-            }*/
-
           title = movie.getmTitle();
         if (title == null) {
             tvOriginalTitle.setTypeface(null, Typeface.BOLD_ITALIC);
@@ -176,8 +130,6 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
 
         keyID = movie.getmID();
-
-
 
 
 
@@ -254,9 +206,6 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
 
     }
 
-
-
-
     public void onTrailerItemClick(View v, int position) {
         OtherData otherData = trailerList.get(position);
         String YOUTUBE_TRAILER_LINK="https://www.youtube.com/watch?v=";
@@ -267,6 +216,8 @@ public class MovieDetailActivity extends AppCompatActivity implements OtherDataA
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
+
+
 
 
 

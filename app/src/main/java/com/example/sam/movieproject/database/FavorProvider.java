@@ -28,7 +28,7 @@ public class FavorProvider extends ContentProvider {
     private static final int MOVIE = 0;
     private static final int MOVIE_WITH_ID = 200;
 
-    private static UriMatcher buildUriMatcher(){
+    private static UriMatcher buildUriMatcher() {
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = FavorContract.AUTHORITY;
 
@@ -41,18 +41,19 @@ public class FavorProvider extends ContentProvider {
 
 
     @Override
-    public boolean onCreate(){
+    public boolean onCreate() {
         mSqliteOpenHelper = new FavoriteMovieHelper(getContext());
         return true;
     }
+
     @Override
     synchronized public Cursor query(@NonNull Uri uri, String[] projection, String selection,
-                                     String[] selectionArgs, String sortOrder){
+                                     String[] selectionArgs, String sortOrder) {
         final SQLiteDatabase db = mSqliteOpenHelper.getReadableDatabase();
         Cursor mCursor;
 
-        switch (sUriMatcher.match(uri)){
-            case MOVIE:{
+        switch (sUriMatcher.match(uri)) {
+            case MOVIE: {
                 mCursor = db.query(FavorContract.MovieEntry.TABLE_FAVOR,
                         projection,
                         selection,
@@ -61,84 +62,79 @@ public class FavorProvider extends ContentProvider {
                         null,
                         sortOrder);
                 break;
-
-
             }
-
             default:
                 throw new IllegalArgumentException("uri not recognized!");
-
-
-
         }
         mCursor.setNotificationUri(getContext().getContentResolver(), uri);
         return mCursor;
 
     }
-@Override
-    public String getType(Uri uri) {
-    final int match = sUriMatcher.match(uri);
 
-    switch (match){
-        case MOVIE:{
-            return FavorContract.MovieEntry.CONTENT_DIR_TYPE;
-        }
-        case MOVIE_WITH_ID:{
-            return FavorContract.MovieEntry.CONTENT_ITEM_TYPE;
-        }
-        default:{
-            throw new IllegalArgumentException("unknown URI man!");
+    @Override
+    public String getType(Uri uri) {
+        final int match = sUriMatcher.match(uri);
+
+        switch (match) {
+            case MOVIE: {
+                return FavorContract.MovieEntry.CONTENT_DIR_TYPE;
+            }
+            case MOVIE_WITH_ID: {
+                return FavorContract.MovieEntry.CONTENT_ITEM_TYPE;
+            }
+            default: {
+                throw new IllegalArgumentException("unknown URI man!");
+            }
         }
     }
-}
 
-@Override
+    @Override
     public Uri insert(Uri uri, ContentValues values) {
-    final SQLiteDatabase db = mSqliteOpenHelper.getWritableDatabase();
-    long _id;
-    Uri returnUri;
+        final SQLiteDatabase db = mSqliteOpenHelper.getWritableDatabase();
+        long _id;
+        Uri returnUri;
 
 
-    switch (sUriMatcher.match(uri)) {
-        case MOVIE:
-            _id = db.insert(FavorContract.MovieEntry.TABLE_FAVOR, null, values);
-            if (_id > 0) {
-                returnUri = FavorContract.MovieEntry.buildMovieUri(_id);
-                db.close();
+        switch (sUriMatcher.match(uri)) {
+            case MOVIE:
+                _id = db.insert(FavorContract.MovieEntry.TABLE_FAVOR, null, values);
+                if (_id > 0) {
+                    returnUri = FavorContract.MovieEntry.buildMovieUri(_id);
+                    db.close();
 
 
-            } else {
-                throw new UnsupportedOperationException("Unable to insert rows into: " + uri);
+                } else {
+                    throw new UnsupportedOperationException("Unable to insert rows into: " + uri);
 
-            }
-            break;
+                }
+                break;
             default:
                 throw new UnsupportedOperationException("unknow uri: " + uri);
         }
-    getContext().getContentResolver().notifyChange(uri, null);
-    return returnUri;
+        getContext().getContentResolver().notifyChange(uri, null);
+        return returnUri;
 
     }
 
 
-@Override
+    @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
-    final SQLiteDatabase db = mSqliteOpenHelper.getWritableDatabase();
-    int rows = 0;
-    switch (sUriMatcher.match(uri)) {
-        case MOVIE:
-            db.delete(FavorContract.MovieEntry.TABLE_FAVOR, selection, selectionArgs);
-            break;
-        default:
-            throw new UnsupportedOperationException("unknown uri" + uri);
-    }
+        final SQLiteDatabase db = mSqliteOpenHelper.getWritableDatabase();
+        int rows = 0;
+        switch (sUriMatcher.match(uri)) {
+            case MOVIE:
+                db.delete(FavorContract.MovieEntry.TABLE_FAVOR, selection, selectionArgs);
+                break;
+            default:
+                throw new UnsupportedOperationException("unknown uri" + uri);
+        }
 
 
         getContext().getContentResolver().notifyChange(uri, null);
 
 
-    return rows;
-}
+        return rows;
+    }
 
 
     @Override
