@@ -23,9 +23,9 @@ You must provide your own API key in order to build the app. When you get it, ju
 
 ## Screenshots
 
-![screen](screenone.png)
+![screen](drawable/screenone.png)
 
-![screen](gradle/screentwo.png)
+![screen](drawable/screentwo.png)
 
 
 ## Libraries
