@@ -23,9 +23,9 @@ You must provide your own API key in order to build the app. When you get it, ju
 
 ## Screenshots
 
-![screen](drawable/screenone.png)
+![screen](https://github.com/samreality4/movieproject/blob/master/app/src/main/res/drawable/screenone.png)
 
-![screen](drawable/screentwo.png)
+![screen](https://github.com/samreality4/movieproject/blob/master/app/src/main/res/drawable/screentwo.png)
 
 
 ## Libraries
