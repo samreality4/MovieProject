@@ -1,11 +1,11 @@
 # movieproject
-This is a colorful app that showcases all the popular and trending movies as part of Udacity's Android Developer Nanodegree.
+This is a movie app that showcases all the trendinging popular and highest rated movies.
 
 ## Features
 
 With the app, you can:
-* Discover the most popular, the most rated or the highest rated movies
-* Save favorite movies locally to view them even when offline
+* Discover the most popular and highest rated movies
+* Save your favorite movies locally
 * Watch trailers
 * Read reviews
 
