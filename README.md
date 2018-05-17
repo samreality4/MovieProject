@@ -1,4 +1,5 @@
 # movieproject
+
 This is a movie app that showcases all the trendinging popular and highest rated movies.
 
 ## Features
