@@ -4,7 +4,7 @@ This is a movie app that showcases all the trendinging popular and highest rated
 
 ## Features
 
-With the app, you can:
+By using this app, you can:
 * Discover the most popular and highest rated movies
 * Save your favorite movies locally
 * Watch trailers
