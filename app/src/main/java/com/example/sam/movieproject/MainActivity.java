@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Cust
         Movie movie = list.get(position);
         intent.putExtra("Movie", movie);
         startActivity(intent);
-        Log.d("clicked position:", String.valueOf(position));
+        //Log.d("clicked position:", String.valueOf(position));
 
     }
 
