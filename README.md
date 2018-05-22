@@ -4,7 +4,7 @@ A wonderful app that displays popular and trending movies.
 
 ## Features
 
-With this app, you can:
+By using this app, you can:
 * View the most popular and trending movies.
 * Save your favorite movie and view them later.
 
