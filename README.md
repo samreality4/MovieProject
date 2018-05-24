@@ -1,6 +1,6 @@
 # movieproject
 
-A wonderful app that displays the most popular and trending movies.
+A wonderful app that displays the most popular and best trending movies.
 
 ## Features
 
