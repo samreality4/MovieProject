@@ -6,7 +6,7 @@ A wonderful app that displays the most popular and best trending movies.
 
 By using this app, you can:
 * View the most popular and most trending movies.
-* Save your favorite movie and view them offline.
+* Save your favorite movie and view them offline later.
 
 ## Screenshots
 
